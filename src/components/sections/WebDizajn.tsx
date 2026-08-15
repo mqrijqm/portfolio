@@ -101,20 +101,9 @@ export default function WebDizajn() {
       <div className="torn-strip -mt-4 h-8 w-full bg-ink" aria-hidden="true" />
 
       {/* ---------- zaglavlje ---------- */}
-      <div className="mx-auto max-w-[1500px] px-4 pb-10 pt-16 sm:px-8 sm:pb-14 sm:pt-24">
+      <div className="mx-auto max-w-[1500px] px-4 pb-10 pt-10 sm:px-8 sm:pb-14 sm:pt-14">
         <Reveal>
-          <p className="font-type text-[10px] tracking-[0.32em] text-mustard">
-            POGLAVLJE 03
-          </p>
-
-          <h2
-            className="mt-8 font-display text-[clamp(2.8rem,11vw,9rem)] leading-[0.82] tracking-tight text-transparent"
-            style={{ WebkitTextStroke: "2px #f6efdc" }}
-          >
-            WEB DIZAJN
-          </h2>
-
-          <div className="mt-6 grid gap-6 border-t border-paper-light/25 pt-6 sm:grid-cols-[1.3fr_1fr] sm:items-start">
+          <div className="grid gap-6 border-t border-paper-light/25 pt-8 sm:grid-cols-[1.3fr_1fr] sm:items-start">
             <p className="max-w-2xl font-serif text-lg leading-relaxed text-paper-light/90 sm:text-xl">
               Sajt nije plakat koji se pomera. Ima svoje vreme, težinu i
               inerciju. Dizajniram ga u Figmi, ali ga završavam u pregledaču —

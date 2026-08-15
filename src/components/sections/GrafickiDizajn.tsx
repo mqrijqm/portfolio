@@ -64,7 +64,7 @@ export default function GrafickiDizajn() {
   return (
     <section
       id="graficki-dizajn"
-      className="paper-bg relative overflow-hidden py-20 sm:py-28"
+      className="paper-bg relative overflow-hidden pb-20 pt-4 sm:pb-28 sm:pt-8"
     >
       <div
         className="pointer-events-none absolute inset-0 z-0"
@@ -76,34 +76,28 @@ export default function GrafickiDizajn() {
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-4 sm:px-8">
         {/* ---------- zaglavlje ---------- */}
-        <Reveal className="mb-10 sm:mb-14">
-          <p className="font-type text-[10px] tracking-[0.32em] text-red">
-            POGLAVLJE 02
-          </p>
-
-          <div className="mt-9 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:gap-12">
+        <Reveal className="mb-12 sm:mb-16">
+          <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-12">
             <div className="relative">
-              <h2 className="type-halftone font-display text-[clamp(2.8rem,10vw,8rem)] leading-[0.92] tracking-tight">
-                GRAFIČKI
-              </h2>
-              <h2 className="font-display text-[clamp(2.8rem,10vw,8rem)] leading-[0.92] tracking-tight text-ink riso">
-                DIZAJN
-              </h2>
-              <Circled className="pointer-events-none absolute -left-3 top-[44%] hidden h-[60%] w-[64%] lg:block" />
-              <Sparkle
-                className="absolute -left-6 -top-7 hidden h-10 w-10 lg:block"
-                color="#d79f35"
-              />
-            </div>
-
-            <div>
               <p className="max-w-2xl font-serif text-lg leading-relaxed text-ink sm:text-xl">
                 Identiteti, plakati, prelom, pakovanje. Počinjem uvek isto — od
                 gomile referenci koje nemaju veze jedna sa drugom, pa tražim
                 šta ih drži zajedno. Ono što ostane posle svog tog sečenja
                 obično je i odgovor.
               </p>
-              <ul className="mt-6 flex flex-wrap gap-2 font-type text-[10px] tracking-[0.18em]">
+              <p className="mt-5 max-w-2xl font-type text-[13px] leading-relaxed text-ink-soft">
+                Vrtlari su farbali bele ruže u crveno jer su posadili
+                pogrešne. Pola posla u dizajnu je da se pogrešna ruža uopšte
+                ne posadi.
+              </p>
+              <Sparkle
+                className="absolute -left-7 -top-6 hidden h-9 w-9 lg:block"
+                color="#d79f35"
+              />
+            </div>
+
+            <div className="relative">
+              <ul className="flex flex-wrap gap-2 font-type text-[10px] tracking-[0.18em]">
                 {[
                   "IDENTITET",
                   "LOGOTIP",
@@ -120,6 +114,7 @@ export default function GrafickiDizajn() {
                   </li>
                 ))}
               </ul>
+              <Circled className="pointer-events-none absolute -left-4 -top-3 hidden h-20 w-52 lg:block" />
             </div>
           </div>
 

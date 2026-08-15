@@ -1,6 +1,5 @@
 import PhotoSlot from "@/components/collage/PhotoSlot";
 import Reveal from "@/components/Reveal";
-import RansomText from "@/components/collage/RansomText";
 import {
   Flower,
   Scribble,
@@ -93,7 +92,7 @@ export default function KoSamJa() {
   return (
     <section
       id="ko-sam-ja"
-      className="paper-bg relative overflow-hidden py-20 sm:py-28"
+      className="paper-bg relative overflow-hidden pb-20 pt-4 sm:pb-28 sm:pt-8"
     >
       {/* dekor */}
       <div
@@ -105,25 +104,6 @@ export default function KoSamJa() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-4 sm:px-8">
-        {/* ---------- zaglavlje ---------- */}
-        <Reveal className="mb-12 sm:mb-16">
-          <div className="flex flex-wrap items-end justify-between gap-6 border-b-4 border-double border-ink pb-5">
-            <div>
-              <p className="font-type text-[10px] tracking-[0.32em] text-red">
-                POGLAVLJE 01
-              </p>
-              <h2 className="mt-7 flex flex-wrap text-[clamp(2.6rem,8vw,6rem)] leading-[0.9]">
-                <span className="sr-only">Ko sam ja</span>
-                <RansomText text="KO SAM JA" seed={11} jitter={6} />
-              </h2>
-            </div>
-            <p className="max-w-xs font-serif text-lg italic leading-snug text-ink-soft">
-              Sve je počelo makazama i maminim magazinima koje niko nije pitao
-              za dozvolu.
-            </p>
-          </div>
-        </Reveal>
-
         <div className="grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
           {/* ---------- kolaž fotografija ---------- */}
           <Reveal className="order-2 lg:order-1" y={60}>

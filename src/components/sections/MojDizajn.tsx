@@ -1,5 +1,4 @@
 import Reveal from "@/components/Reveal";
-import RansomText from "@/components/collage/RansomText";
 import Marquee from "@/components/Marquee";
 import {
   Arrow,
@@ -70,7 +69,7 @@ export default function MojDizajn() {
   return (
     <section
       id="moj-dizajn"
-      className="paper-bg relative overflow-hidden py-20 sm:py-28"
+      className="paper-bg relative overflow-hidden pb-20 pt-4 sm:pb-28 sm:pt-8"
     >
       {/* ---------- pozadinski kolaž ---------- */}
       <div
@@ -91,15 +90,7 @@ export default function MojDizajn() {
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-8">
         {/* ---------- zaglavlje ---------- */}
         <Reveal className="mb-14 sm:mb-20">
-          <p className="font-type text-[10px] tracking-[0.32em] text-red">
-            POGLAVLJE 04
-          </p>
-          <h2 className="mt-8 flex flex-wrap text-[clamp(2.6rem,10vw,8rem)] leading-[0.88]">
-            <span className="sr-only">Moj dizajn</span>
-            <RansomText text="MOJ DIZAJN" seed={23} jitter={9} />
-          </h2>
-
-          <div className="mt-8 flex flex-wrap items-center gap-5">
+          <div className="flex flex-wrap items-center gap-5">
             <Burst className="h-16 w-16" color="#2e4a79" />
             <p className="max-w-xl font-serif text-lg italic leading-snug text-ink sm:text-2xl">
               Pet stvari u koje verujem dovoljno da ih napišem, i četiri koje

@@ -1,22 +1,31 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import EyeCollage from "@/components/collage/EyeCollage";
 import RansomText from "@/components/collage/RansomText";
+import { Burst, Sparkle, DotGrid } from "@/components/collage/Bits";
 import {
-  Arrow,
-  Burst,
-  Manicule,
-  Moth,
-  Sparkle,
-  Stamp,
-  DotGrid,
-} from "@/components/collage/Bits";
+  CheshireGrin,
+  PocketWatch,
+  RabbitHole,
+  WhiteRabbit,
+  Key,
+} from "@/components/wonderland/WBits";
+import { Suit, type SuitName } from "@/components/wonderland/Suits";
 import { DUR, EASE, prefersReduced } from "@/lib/motion";
 
 gsap.registerPlugin(useGSAP);
+
+/** Sitne karte koje lebde po pozadini. */
+const FLOATING: { suit: SuitName; rank: string; cls: string; rot: number }[] = [
+  { suit: "herc", rank: "A", cls: "left-[6%] top-[18%] w-12 sm:w-16", rot: -14 },
+  { suit: "pik", rank: "K", cls: "left-[30%] top-[8%] w-10 sm:w-14", rot: 11 },
+  { suit: "karo", rank: "Q", cls: "right-[7%] top-[13%] w-11 sm:w-14", rot: -8 },
+  { suit: "tref", rank: "J", cls: "left-[45%] bottom-[9%] w-10 sm:w-14", rot: 17 },
+];
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
@@ -55,7 +64,7 @@ export default function Hero() {
             opacity: 0,
             scale: 0.6,
             rotation: -20,
-            stagger: 0.08,
+            stagger: 0.07,
             duration: DUR.base,
             ease: EASE.back,
           },
@@ -71,23 +80,23 @@ export default function Hero() {
       ref={root}
       className="paper-bg relative overflow-hidden pt-14 sm:pt-16"
     >
-      {/* ---------- pozadinski isečci ---------- */}
+      {/* ---------- pozadina ---------- */}
       <div
         className="pointer-events-none absolute inset-0 z-0"
         aria-hidden="true"
       >
         <div className="torn-a absolute -left-24 top-24 h-72 w-72 rotate-12 bg-mustard/25 sm:h-96 sm:w-96" />
         <div className="torn-b absolute -right-10 top-1/3 h-64 w-64 -rotate-6 bg-pink/20 sm:h-80 sm:w-80" />
-        <div className="halftone-lg blob-mask absolute bottom-[6%] left-[38%] hidden h-56 w-56 rounded-full text-red/45 md:block lg:h-72 lg:w-72" />
-        <div className="halftone blob-mask absolute right-[24%] top-[8%] hidden h-40 w-40 rounded-full text-blue/40 lg:block" />
+        <RabbitHole className="absolute -bottom-24 left-[30%] h-[420px] w-[420px] text-ink opacity-[0.13]" />
+        <div className="halftone blob-mask absolute right-[24%] top-[8%] hidden h-40 w-40 rounded-full text-alice/40 lg:block" />
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-[1600px] items-center gap-6 px-4 pb-20 pt-8 sm:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:gap-2 lg:pb-24">
+      <div className="relative z-10 mx-auto grid max-w-[1600px] items-center gap-6 px-4 pb-16 pt-8 sm:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:gap-2 lg:pb-20">
         {/* ---------- tekst ---------- */}
         <div className="order-2 lg:order-1">
-          <p className="js-kicker font-type text-[10px] tracking-[0.32em] text-ink-soft sm:text-xs">
+          <p className="js-kicker flex flex-wrap items-center gap-x-2 font-type text-[10px] tracking-[0.32em] text-ink-soft sm:text-xs">
             GRAFIČKI DIZAJN · WEB DIZAJN · KOLAŽ
-            <span className="mx-2 text-red">★</span>
+            <span className="text-red">♥</span>
             BEOGRAD
           </p>
 
@@ -98,9 +107,9 @@ export default function Hero() {
             <RansomText text="MARIJA" seed={4} jitter={8} />
           </h1>
 
-          <p className="js-punch mt-7 max-w-xl font-serif text-[clamp(1.5rem,3.4vw,2.6rem)] italic leading-[1.15] text-ink riso-soft">
+          <p className="js-punch riso-soft mt-7 max-w-xl font-serif text-[clamp(1.5rem,3.4vw,2.6rem)] italic leading-[1.15] text-ink">
             Dizajn koji te{" "}
-            <span className="underline-sketch not-italic font-display tracking-wide">
+            <span className="underline-sketch font-display not-italic tracking-wide">
               GLEDA
             </span>{" "}
             nazad.
@@ -108,27 +117,26 @@ export default function Hero() {
 
           <p className="js-lede mt-6 max-w-md font-type text-[13px] leading-relaxed text-ink-soft sm:text-sm">
             Dizajner sam. Pravim identitete, plakate, editorijal i sajtove.
-            Volim stare magazine, tvrde kontraste i stvari koje ne izgledaju
-            kao šablon. Ako ti se učini da te nešto na ovoj stranici posmatra
-            — nije ti se učinilo.
+            Ovaj sajt je špil od pet karata — svaka vodi u svoje poglavlje.
+            Ako ti se učini da te nešto odavde posmatra, nije ti se učinilo.
           </p>
 
           <div className="js-cta mt-9 flex flex-wrap items-center gap-5">
             <a
-              href="#graficki-dizajn"
-              className="group inline-flex items-center gap-3 border-2 border-ink bg-ink px-6 py-3 font-type text-[11px] tracking-[0.22em] text-paper-light transition-colors hover:bg-red hover:border-red"
+              href="#spil"
+              className="group inline-flex items-center gap-3 border-2 border-ink bg-ink px-6 py-3 font-type text-[11px] tracking-[0.22em] text-paper-light transition-colors hover:border-red hover:bg-red"
             >
-              POGLEDAJ RADOVE
+              ZAVUCI SE NIZ RUPU
               <span className="transition-transform group-hover:translate-y-1">
                 ↓
               </span>
             </a>
-            <a
-              href="#kontakt"
+            <Link
+              href="/kontakt"
               className="font-type text-[11px] tracking-[0.22em] text-ink underline decoration-red decoration-2 underline-offset-4 hover:text-red"
             >
               PIŠI MI
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -143,7 +151,32 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 z-20"
         aria-hidden="true"
       >
-        {/* pečat "ručni rad" — dole levo, u praznini ispod dugmeta */}
+        {/* karte koje lebde */}
+        {FLOATING.map((c, i) => (
+          <div
+            key={c.suit + c.rank}
+            className={`js-bit drift card-face absolute hidden aspect-[5/7] items-center justify-center lg:flex ${c.cls}`}
+            style={
+              {
+                "--drift-rot": `${c.rot}deg`,
+                transform: `rotate(${c.rot}deg)`,
+                animationDelay: `${i * 0.9}s`,
+              } as React.CSSProperties
+            }
+          >
+            <Suit name={c.suit} className="h-1/3 w-1/3" />
+            <span
+              className="absolute left-1 top-0.5 font-display text-[11px]"
+              style={{
+                color: c.suit === "pik" || c.suit === "tref" ? "#16130e" : "#c3341d",
+              }}
+            >
+              {c.rank}
+            </span>
+          </div>
+        ))}
+
+        {/* pečat "ručni rad" */}
         <div className="js-bit absolute bottom-[9%] left-[3%] hidden h-24 w-24 -rotate-12 lg:block">
           <Burst className="h-full w-full" color="#c3341d" accent="#f6efdc" />
           <span className="absolute inset-0 flex items-center justify-center text-center font-display text-[11px] leading-tight tracking-wider text-paper-light">
@@ -153,29 +186,23 @@ export default function Hero() {
           </span>
         </div>
 
-        <Arrow className="js-bit absolute bottom-[14%] left-[17%] hidden h-12 w-20 rotate-[10deg] lg:block" />
-        <Manicule className="js-bit absolute bottom-[10%] left-[27%] hidden h-14 w-24 -rotate-6 lg:block" />
-        <DotGrid className="js-bit absolute bottom-[11%] left-[40%] hidden h-14 w-14 opacity-35 xl:block" />
+        <PocketWatch className="js-bit absolute bottom-[13%] left-[17%] hidden h-20 w-16 rotate-[9deg] lg:block" />
+        <WhiteRabbit className="js-bit absolute bottom-[6%] left-[27%] hidden h-24 w-20 -rotate-6 xl:block" />
+        <DotGrid className="js-bit absolute bottom-[11%] left-[40%] hidden h-14 w-14 opacity-30 xl:block" />
 
         <Sparkle className="js-bit absolute left-[1%] top-[9%] h-7 w-7 sm:h-10 sm:w-10" />
-        <Sparkle
-          className="js-bit absolute left-[46%] top-[31%] hidden h-7 w-7 xl:block"
-          color="#d79f35"
-        />
-
-        <Moth className="js-bit absolute bottom-[4%] right-[3%] h-20 w-24 rotate-[10deg] opacity-90 sm:h-28 sm:w-36" />
-        <Stamp
-          className="js-bit absolute bottom-[22%] right-[1%] hidden h-24 w-20 rotate-[7deg] xl:block"
-          label="No. 01"
-        />
+        <Key className="js-bit absolute bottom-[4%] right-[4%] h-24 w-10 rotate-[24deg] sm:h-32 sm:w-14" />
       </div>
 
-      {/* ---------- signal za skrol ---------- */}
-      <div className="relative z-20 flex items-center justify-center gap-3 pb-6 font-type text-[10px] tracking-[0.3em] text-ink-soft">
-        <span className="h-px w-10 bg-ink/40" />
-        SKROLUJ
-        <span className="animate-bounce">↓</span>
-        <span className="h-px w-10 bg-ink/40" />
+      {/* ---------- osmeh Češirskog mačka ---------- */}
+      <div className="relative z-20 flex flex-col items-center pb-8">
+        <CheshireGrin className="js-bit h-16 w-32 opacity-90 sm:h-20 sm:w-44" />
+        <div className="mt-4 flex items-center gap-3 font-type text-[10px] tracking-[0.3em] text-ink-soft">
+          <span className="h-px w-10 bg-ink/40" />
+          SKROLUJ
+          <span className="animate-bounce">↓</span>
+          <span className="h-px w-10 bg-ink/40" />
+        </div>
       </div>
     </section>
   );

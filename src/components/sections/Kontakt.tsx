@@ -31,7 +31,7 @@ export default function Kontakt() {
   return (
     <section
       id="kontakt"
-      className="paper-bg relative overflow-hidden pt-20 sm:pt-28"
+      className="paper-bg relative overflow-hidden pb-20 pt-4 sm:pb-28 sm:pt-8"
     >
       <div
         className="pointer-events-none absolute inset-0 z-0"
@@ -42,19 +42,8 @@ export default function Kontakt() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1300px] px-4 sm:px-8">
-        {/* ---------- zaglavlje ---------- */}
-        <Reveal>
-          <p className="font-type text-[10px] tracking-[0.32em] text-red">
-            POGLAVLJE 05
-          </p>
-          <h2 className="riso mt-9 font-display text-[clamp(3rem,13vw,10rem)] leading-[0.82] tracking-tight">
-            KONTAKT
-          </h2>
-          <div className="rule mt-5" />
-        </Reveal>
-
         {/* ---------- glavni deo ---------- */}
-        <div className="mt-12 grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <div>
             <Reveal>
               <p className="max-w-xl font-serif text-[clamp(1.5rem,3.6vw,2.6rem)] italic leading-[1.15]">
@@ -183,26 +172,6 @@ export default function Kontakt() {
       </div>
 
       {/* ---------- podnožje ---------- */}
-      <footer className="relative z-10 mt-20 border-t-4 border-double border-ink bg-ink text-paper-light">
-        <div className="mx-auto flex max-w-[1300px] flex-col gap-6 px-4 py-10 sm:px-8 sm:py-12 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="font-display text-4xl leading-none tracking-[0.1em] sm:text-6xl">
-              MARIJA<span className="text-red">★</span>
-            </p>
-            <p className="mt-3 font-type text-[10px] tracking-[0.25em] text-paper-light/60">
-              GRAFIČKI I WEB DIZAJN · BEOGRAD
-            </p>
-          </div>
-
-          <div className="font-type text-[10px] leading-relaxed tracking-[0.18em] text-paper-light/55 md:text-right">
-            <p>IZDANJE No. 01 · {new Date().getFullYear()}</p>
-            <p className="mt-1">
-              SLOG: ANTON · PLAYFAIR DISPLAY · COURIER PRIME
-            </p>
-            <p className="mt-1">SVE ILUSTRACIJE CRTANE RUČNO, U KODU.</p>
-          </div>
-        </div>
-      </footer>
     </section>
   );
 }
