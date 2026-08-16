@@ -3,7 +3,7 @@ import Kontakt from "@/components/sections/Kontakt";
 
 export const metadata: Metadata = {
   title: "Kontakt — Marija",
-  description: "Piši mi. Beograd, grafički i web dizajn.",
+  description: "Piši mi. Banja Luka, grafički i web dizajn.",
 };
 
 export default function KontaktPage() {
