@@ -1,9 +1,4 @@
 import Hero from "@/components/sections/Hero";
-import KoSamJa from "@/components/sections/KoSamJa";
-import GrafickiDizajn from "@/components/sections/GrafickiDizajn";
-import WebDizajn from "@/components/sections/WebDizajn";
-import MojDizajn from "@/components/sections/MojDizajn";
-import Kontakt from "@/components/sections/Kontakt";
 import Marquee from "@/components/Marquee";
 
 export default function Home() {
@@ -25,12 +20,6 @@ export default function Home() {
           className="font-type text-xs tracking-[0.3em] sm:text-sm"
         />
       </div>
-
-      <KoSamJa />
-      <GrafickiDizajn />
-      <WebDizajn />
-      <MojDizajn />
-      <Kontakt />
     </main>
   );
 }

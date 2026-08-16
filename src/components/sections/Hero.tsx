@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import EyeCollage from "@/components/collage/EyeCollage";
@@ -15,6 +16,7 @@ import {
   DotGrid,
 } from "@/components/collage/Bits";
 import { DUR, EASE, prefersReduced } from "@/lib/motion";
+import { STRANICE } from "@/lib/routes";
 
 gsap.registerPlugin(useGSAP);
 
@@ -114,21 +116,21 @@ export default function Hero() {
           </p>
 
           <div className="js-cta mt-9 flex flex-wrap items-center gap-5">
-            <a
-              href="#graficki-dizajn"
+            <Link
+              href="/graficki"
               className="group inline-flex items-center gap-3 border-2 border-ink bg-ink px-6 py-3 font-type text-[11px] tracking-[0.22em] text-paper-light transition-colors hover:bg-red hover:border-red"
             >
               POGLEDAJ RADOVE
-              <span className="transition-transform group-hover:translate-y-1">
-                ↓
+              <span className="transition-transform group-hover:translate-x-1">
+                →
               </span>
-            </a>
-            <a
-              href="#kontakt"
+            </Link>
+            <Link
+              href="/kontakt"
               className="font-type text-[11px] tracking-[0.22em] text-ink underline decoration-red decoration-2 underline-offset-4 hover:text-red"
             >
               PIŠI MI
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -170,13 +172,27 @@ export default function Hero() {
         />
       </div>
 
-      {/* ---------- signal za skrol ---------- */}
-      <div className="relative z-20 flex items-center justify-center gap-3 pb-6 font-type text-[10px] tracking-[0.3em] text-ink-soft">
-        <span className="h-px w-10 bg-ink/40" />
-        SKROLUJ
-        <span className="animate-bounce">↓</span>
-        <span className="h-px w-10 bg-ink/40" />
-      </div>
+      {/* ---------- sadržaj izdanja ----------
+           Desni razmak na mobilnom drži tekst dalje od leptira. */}
+      <nav
+        aria-label="Sadržaj"
+        className="js-cta relative z-20 mx-auto flex max-w-[1600px] flex-wrap items-center justify-center gap-x-5 gap-y-2 pb-7 pl-4 pr-28 font-type text-[10px] tracking-[0.24em] text-ink-soft sm:px-8"
+      >
+        <span className="text-red">SADRŽAJ</span>
+        <span className="h-px w-8 bg-ink/40" />
+        {STRANICE.map(({ href, label }, i) => (
+          <Link
+            key={href}
+            href={href}
+            className="transition-colors hover:text-red"
+          >
+            <span className="mr-1.5 text-ink/40">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            {label}
+          </Link>
+        ))}
+      </nav>
     </section>
   );
 }

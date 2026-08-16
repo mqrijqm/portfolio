@@ -2,6 +2,7 @@
 
 import { ReactLenis } from "lenis/react";
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -14,6 +15,14 @@ export default function SmoothScroll({
 }) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const lenisRef = useRef<any>(null);
+  const pathname = usePathname();
+
+  // Pri prelasku na novu stranicu Lenis drži staru poziciju skrola —
+  // zato je ručno vraćamo na vrh i preračunavamo ScrollTrigger merenja.
+  useEffect(() => {
+    lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
+    ScrollTrigger.refresh();
+  }, [pathname]);
 
   useEffect(() => {
     // Lenis mora da vozi GSAP-ov ticker, inače animacije "kasne" za skrolom.
