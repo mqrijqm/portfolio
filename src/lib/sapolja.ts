@@ -33,30 +33,6 @@ type Medij = {
  * i sprečio poskakivanje sadržaja pri učitavanju.
  */
 export const M = {
-  polje: {
-    src: "/projects/sapolja/polje-korpa.jpg",
-    w: 1600,
-    h: 1069,
-    alt: "Dvije žene sa korpom hodaju kroz livadu, kadar uokviren drškom pletene korpe u prvom planu",
-  },
-  piknik: {
-    src: "/projects/sapolja/piknik.jpg",
-    w: 1400,
-    h: 936,
-    alt: "Piknik na livadi: korpe sa paradajzom, zelenišem, voćem i teglom meda",
-  },
-  detalj: {
-    src: "/projects/sapolja/detalj-plodovi.jpg",
-    w: 1400,
-    h: 936,
-    alt: "Detalj iz korpe — jabuke, grožđe, paradajz i tegla meda na kariranom stolnjaku",
-  },
-  znakTrava: {
-    src: "/projects/sapolja/znak-trava.jpg",
-    w: 1400,
-    h: 672,
-    alt: "SaPolja znak i logotip u bijeloj boji preko fotografije trave",
-  },
   znak: {
     src: "/projects/sapolja/znak.png",
     w: 950,
@@ -75,16 +51,35 @@ export const M = {
     h: 660,
     alt: "Grafički motiv zakrivljenih linija polja izveden iz znaka",
   },
+  /** Konstrukcijski crteži — po jedan za svaku fazu anatomije znaka. */
+  anatomijaPolja: {
+    src: "/projects/sapolja/anatomija-polja.jpg",
+    w: 453,
+    h: 579,
+    alt: "Konstrukcija motiva polja — zakrivljene brazde upisane u geometrijsku mrežu",
+  },
+  anatomijaKorpa: {
+    src: "/projects/sapolja/anatomija-korpa.jpg",
+    w: 481,
+    h: 500,
+    alt: "Konstrukcija korpe — vanjski oblik sa drškom koji obuhvata polja i plod",
+  },
+  anatomijaPlod: {
+    src: "/projects/sapolja/anatomija-plod.jpg",
+    w: 840,
+    h: 1076,
+    alt: "Konstrukcija ploda — jabuka sa listom upisana u geometrijsku mrežu",
+  },
   letakLice: {
-    src: "/projects/sapolja/letak-lice.jpg",
-    w: 1100,
-    h: 1558,
+    src: "/projects/sapolja/letak-lice.png",
+    w: 887,
+    h: 1246,
     alt: "Lice letka: znak, logotip, slogan i motiv polja pri dnu",
   },
   letakNalicje: {
-    src: "/projects/sapolja/letak-nalicje.jpg",
-    w: 1100,
-    h: 1558,
+    src: "/projects/sapolja/letak-nalicje.png",
+    w: 735,
+    h: 1034,
     alt: "Naličje letka: tekst o platformi, način rada i gravirane ilustracije proizvoda",
   },
   ilustracije: {
@@ -93,41 +88,11 @@ export const M = {
     h: 434,
     alt: "Gravirane ilustracije bundeve, bijelog luka, trešanja, paradajza i tegle",
   },
-  digital: {
-    src: "/projects/sapolja/digital.jpg",
-    w: 433,
-    h: 246,
-    alt: "Prikaz SaPolja sajta na laptopu i telefonu",
-  },
-  pakovanje: {
-    src: "/projects/sapolja/pakovanje.jpg",
-    w: 314,
-    h: 246,
-    alt: "Kraft papirna kesa i viseća etiketa sa SaPolja znakom",
-  },
   oznaka: {
     src: "/projects/sapolja/oznaka.jpg",
     w: 160,
     h: 112,
     alt: "Okrugli pečat sa natpisom Od polja do vas",
-  },
-  signage: {
-    src: "/projects/sapolja/signage.jpg",
-    w: 235,
-    h: 122,
-    alt: "Okrugla zidna oznaka mjesta za preuzimanje sa SaPolja znakom",
-  },
-  gajba: {
-    src: "/projects/sapolja/gajba.jpg",
-    w: 320,
-    h: 118,
-    alt: "Drvena gajba puna paradajza sa utisnutim SaPolja znakom",
-  },
-  nosac: {
-    src: "/projects/sapolja/nosac.jpg",
-    w: 230,
-    h: 98,
-    alt: "Drveni nosač sa staklenim flašama mlijeka i SaPolja znakom",
   },
   ikone: {
     src: "/projects/sapolja/ikone.png",

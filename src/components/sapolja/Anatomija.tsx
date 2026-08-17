@@ -9,54 +9,49 @@ import { M } from "@/lib/sapolja";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-/**
- * Tri elementa znaka. Okviri su procenti unutar slike znaka —
- * markeri samo pokazuju gdje da se gleda, geometrija znaka se ne dira.
- */
+/** Tri elementa znaka — svaki sa svojim konstrukcijskim crtežom. */
 const FAZE = [
   {
     id: "polja",
     naslov: "Polja",
     tekst:
       "Zakrivljene linije predstavljaju brazde, različita mjesta porijekla i puteve lokalnih proizvođača koji se približavaju zajedničkoj tački.",
-    okvir: { left: "8%", top: "48%", width: "80%", height: "39%" },
+    medij: M.anatomijaPolja,
   },
   {
     id: "korpa",
     naslov: "Korpa",
     tekst:
       "Vanjski oblik objedinjuje različite izvore u jednu stabilnu cjelinu. Korpa predstavlja platformu koja prikuplja, organizuje i povezuje ponudu.",
-    okvir: { left: "6%", top: "6%", width: "85%", height: "84%" },
+    medij: M.anatomijaKorpa,
   },
   {
     id: "plod",
     naslov: "Plod",
     tekst:
       "Proizvod je u centru znaka jer je svježina hrane krajnji rezultat cijelog sistema. List dodaje prepoznatljiv signal rasta i sezonalnosti.",
-    okvir: { left: "27%", top: "31%", width: "37%", height: "28%" },
+    medij: M.anatomijaPlod,
   },
 ];
 
-/** Znak sa diskretnim markerom preko aktivnog dijela. */
-function Znak({ aktivna }: { aktivna: number }) {
+/**
+ * Crteži stoje jedan preko drugog i samo se pretapaju — tako okvir
+ * ne poskakuje kad crteži imaju različit odnos stranica.
+ */
+function Crtez({ aktivna }: { aktivna: number }) {
   return (
-    <div className="relative mx-auto w-full max-w-[420px]">
-      <Image
-        src={M.znak.src}
-        width={M.znak.w}
-        height={M.znak.h}
-        alt={M.znak.alt}
-        sizes="(min-width: 1024px) 420px, 80vw"
-        className="h-auto w-full"
-      />
-
+    <div className="relative mx-auto aspect-[4/5] w-full max-w-[420px]">
       {FAZE.map((f, i) => (
-        <span
+        <Image
           key={f.id}
-          aria-hidden="true"
-          style={{ ...f.okvir, borderColor: "var(--sp-clay)" }}
-          className={`pointer-events-none absolute rounded-[40%] border border-dashed transition-opacity duration-700 ${
-            i === aktivna ? "opacity-70" : "opacity-0"
+          src={f.medij.src}
+          width={f.medij.w}
+          height={f.medij.h}
+          alt={f.medij.alt}
+          sizes="(min-width: 1024px) 420px, 80vw"
+          aria-hidden={i !== aktivna}
+          className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-700 ${
+            i === aktivna ? "opacity-100" : "opacity-0"
           }`}
         />
       ))}
@@ -96,10 +91,10 @@ export default function Anatomija() {
   return (
     <div ref={root} className="mx-auto max-w-[1200px] px-5">
       <div className="lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-        {/* ---------- znak ---------- */}
+        {/* ---------- crtež ---------- */}
         <div className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:items-center">
           <div className="hidden w-full lg:block">
-            <Znak aktivna={aktivna} />
+            <Crtez aktivna={aktivna} />
             <p className="mt-8 text-center font-sans text-[10px] uppercase tracking-[0.32em] text-[color:var(--sp-clay)]">
               {FAZE[aktivna].naslov}
             </p>
@@ -108,21 +103,20 @@ export default function Anatomija() {
 
         {/* ---------- faze ---------- */}
         <div>
-          {FAZE.map((f, i) => (
+          {FAZE.map((f) => (
             <section
               key={f.id}
               className="js-faza border-t border-[color:var(--sp-line)] py-12 lg:flex lg:min-h-screen lg:flex-col lg:justify-center lg:border-0 lg:py-0"
             >
-              {/* na telefonu znak stoji uz svoju fazu */}
+              {/* na telefonu crtež stoji uz svoju fazu */}
               <div className="mb-8 lg:hidden">
                 <Image
-                  src={M.znak.src}
-                  width={M.znak.w}
-                  height={M.znak.h}
-                  alt={i === 0 ? M.znak.alt : ""}
-                  aria-hidden={i !== 0}
+                  src={f.medij.src}
+                  width={f.medij.w}
+                  height={f.medij.h}
+                  alt={f.medij.alt}
                   sizes="60vw"
-                  className="mx-auto h-auto w-[58%] max-w-[240px]"
+                  className="mx-auto h-auto w-[62%] max-w-[260px]"
                 />
               </div>
 
