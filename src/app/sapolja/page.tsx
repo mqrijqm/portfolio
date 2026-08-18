@@ -165,7 +165,7 @@ export default function SapoljaBrendPage() {
               Vodilice žive u istom okviru da bi uvijek pale na iste tačke slova
               (x-visina i osnovna linija), bez obzira koliko je ekran širok.
               Rastegnute su van okvira, a panel ih siječe na svojim ivicama. */}
-          <div className="absolute left-[18%] top-[54%] aspect-[3.43] h-[36%]">
+          <div className="absolute bottom-[10%] right-[5%] aspect-[3.43] w-[72%] max-w-[1250px]">
             <div className="pointer-events-none absolute inset-0" aria-hidden="true">
               {VODILICE.uspravne.map((x) => (
                 <span
