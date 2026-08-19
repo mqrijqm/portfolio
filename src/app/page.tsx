@@ -1,9 +1,5 @@
-import Hero from "@/components/sections/Hero";
+import SapoljaHome from "@/components/SapoljaHome";
 
 export default function Home() {
-  return (
-    <main className="pt-11 sm:pt-14">
-      <Hero />
-    </main>
-  );
+  return <SapoljaHome />;
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -13,6 +14,19 @@ const gazpacho = localFont({
     { path: "../fonts/Gazpacho-Italic.woff2", weight: "400", style: "italic" },
   ],
   variable: "--font-gazpacho-raw",
+  display: "swap",
+});
+
+const recoleta = localFont({
+  src: "../fonts/Recoleta-Regular.otf",
+  variable: "--font-recoleta",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin-ext"],
+  weight: ["400", "500", "600"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -36,7 +50,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="sr" className={`${gazpacho.variable} antialiased`}>
+    <html
+      lang="sr"
+      className={`${gazpacho.variable} ${inter.variable} ${recoleta.variable} antialiased`}
+    >
       <body className="min-h-full">
         <Nav />
         <SmoothScroll>{children}</SmoothScroll>
