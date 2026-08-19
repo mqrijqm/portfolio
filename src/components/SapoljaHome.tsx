@@ -96,7 +96,74 @@ export default function SapoljaBrendPage() {
         />
       </section>
 
-      {/* ========================= 2 · VARIJANTE ========================== */}
+      {/* ======================= 2 · O PROJEKTU ========================== */}
+      <section
+        id="o-projektu"
+        className="min-h-[100svh] bg-[#F4F0E8] px-6 py-20 md:px-[7vw] md:py-[11vh]"
+      >
+        <SapoljaLogotip
+          title="SaPolja"
+          className="w-[150px] text-[color:var(--green)] md:w-[190px]"
+        />
+
+        <div className="mt-6 border-t border-[color:var(--green)]/30" />
+
+        <div className="grid gap-16 py-12 md:grid-cols-[0.9fr_1.1fr] md:gap-[8vw] md:py-[8vh]">
+          <div>
+            <p className={NADNASLOV}>ZADATAK</p>
+            <p className="mt-5 max-w-xl text-[15px] leading-[1.75] md:text-[17px]">
+              Osmislila sam vizuelni identitet za SaPolja — platformu koja
+              povezuje male proizvođače iz našeg regiona sa stolovima ljudi u
+              Banjoj Luci. Brend je trebalo da izgleda savremeno i pouzdano,
+              ali da zadrži toplinu zemlje, pijace i hrane koju poznajemo.
+            </p>
+
+            <p className={`mt-10 ${NADNASLOV}`}>VAŽNO</p>
+            <p className="mt-5 max-w-xl text-[15px] leading-[1.75] md:text-[17px]">
+              Cilj nije bio napraviti još jedan generičan „eko“ znak. Tražila
+              sam sistem koji govori o porijeklu i blizini bez rustikalnih
+              klišea — dovoljno jednostavan za aplikaciju, a dovoljno ljudski
+              za drvenu gajbu, papirnu kesu i letak.
+            </p>
+
+            <div className="mt-14 flex items-center justify-between gap-6 border-b border-[color:var(--green)]/30 pb-3">
+              <span className={NADNASLOV}>OBLAST</span>
+              <span className={`${NADNASLOV} text-right opacity-65`}>
+                BRENDING · VIZUELNI IDENTITET
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <p className={NADNASLOV}>IDEJA I RJEŠENJE</p>
+            <p className="mt-5 max-w-2xl text-[15px] leading-[1.75] md:text-[17px]">
+              Znak spaja tri slike u jednu: korpu, brazde i plod. Korpa govori
+              o izboru i dostavi, brazde o radu proizvođača, a plod o svježini
+              i rezultatu tog rada. Tako je nastao simbol koji može stajati
+              samostalno, ali i graditi prepoznatljiv sistem kroz pattern,
+              ilustraciju i digitalne ikone.
+            </p>
+
+            <p className={`mt-10 ${NADNASLOV}`}>ZAŠTO OVAKO</p>
+            <p className="mt-5 max-w-2xl text-[15px] leading-[1.75] md:text-[17px]">
+              Tamnozelena nosi povjerenje i prirodnost, krem boja daje osjećaj
+              papira i svakodnevne bliskosti, dok terakota uvodi toplinu zrelog
+              ploda. Recoleta omekšava geometriju znaka i daje brendu glas koji
+              je miran, domaći i dostojanstven — bez nostalgije i bez folklora.
+            </p>
+
+            <p className={`mt-10 ${NADNASLOV}`}>KOME JE NAMIJENJENO</p>
+            <p className="mt-5 max-w-2xl text-[15px] leading-[1.75] md:text-[17px]">
+              Ljudima koji žele znati odakle dolazi njihova hrana, porodicama
+              koje kupuju lokalno i proizvođačima kojima je potreban direktan,
+              jasan put do kupca. Identitet zato mora jednako dobro raditi na
+              ekranu, ambalaži i na običnom komadu papira.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================= 3 · VARIJANTE ========================== */}
       <section
         id="varijante"
         className={`flex flex-col bg-white px-6 py-16 ${EKRAN}`}
@@ -126,28 +193,6 @@ export default function SapoljaBrendPage() {
               ) : null}
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ========================== 3 · PROCES ============================ */}
-      <section
-        id="proces"
-        className={`flex flex-col bg-[#FFFEFB] px-6 py-16 ${EKRAN}`}
-      >
-        <div className="flex items-baseline justify-between gap-6 text-[color:var(--green)]">
-          <p className={NADNASLOV}>PROCES RADA</p>
-          <p className={`${NADNASLOV} text-right opacity-60`}>
-            SKICE I ISTRAŽIVANJE ZNAKA
-          </p>
-        </div>
-
-        <div className="mt-8 flex min-h-0 flex-1 items-center justify-center overflow-hidden">
-          <Slika
-            medij={A.skice}
-            sizes="(min-width: 768px) 70vw, 100vw"
-            fit="contain"
-            className="h-full w-full"
-          />
         </div>
       </section>
 
