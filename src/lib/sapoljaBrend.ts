@@ -162,6 +162,13 @@ export const A = {
     1034,
     "Zadnja strana SaPolja letka sa opisom načina rada i kontaktom",
   ),
+  ilustracije: medij(
+    "ilustracije.png",
+    "ilustracije.png",
+    1500,
+    434,
+    "Gravirane ilustracije bundeve, luka, trešanja, paradajza i tegle",
+  ),
   pattern: medij(
     "pattern.png",
     "ChatGPT_Image_17__авг_2026__16_06_07.png",

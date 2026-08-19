@@ -298,7 +298,27 @@ export default function SapoljaBrendPage() {
         </div>
       </section>
 
-      {/* ========================== 7 · PRIMJENE ========================== */}
+      {/* ======================= 7 · ILUSTRACIJE ========================== */}
+      <section
+        id="ilustracije"
+        className="overflow-hidden bg-[color:var(--cream)] py-16"
+      >
+        <div className="flex items-baseline justify-between gap-6 px-6 text-[color:var(--green)]">
+          <p className={NADNASLOV}>ILUSTRACIJE PROIZVODA</p>
+          <p className={`${NADNASLOV} text-right opacity-60`}>
+            GRAVIRANI CRTEŽI
+          </p>
+        </div>
+
+        <Slika
+          medij={A.ilustracije}
+          sizes="100vw"
+          fit="contain"
+          className="mt-10 h-auto w-full"
+        />
+      </section>
+
+      {/* ========================== 8 · PRIMJENE ========================== */}
       <section id="primjene" className={`flex flex-col bg-white py-16 ${EKRAN}`}>
         <p className={`px-6 text-[color:var(--green)] ${NADNASLOV}`}>PRIMJENE</p>
 
