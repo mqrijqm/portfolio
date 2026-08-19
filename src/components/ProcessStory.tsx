@@ -134,7 +134,7 @@ export default function ProcessStory() {
             </p>
             <h1
               id="process-title"
-              className="mt-5 max-w-[720px] font-[family-name:var(--font-gazpacho)] text-[clamp(42px,5.8vw,92px)] font-light leading-[.94] tracking-[-0.035em]"
+              className="mt-5 max-w-[1050px] font-[family-name:var(--font-gazpacho)] text-[clamp(42px,5.2vw,86px)] font-light leading-[.94] tracking-[-0.035em]"
             >
               Kako ideja pronađe<br />svog čovjeka.
             </h1>
@@ -144,25 +144,25 @@ export default function ProcessStory() {
           </p>
         </div>
 
-        <Step number="01" title="Prvo primijetim" className="mt-16 md:absolute md:left-[11%] md:top-[39%] md:mt-0">
+        <Step number="01" title="Prvo primijetim" className="mt-16 md:absolute md:left-[11%] md:top-[50%] md:mt-0 md:w-[340px]">
           Neku prazninu. Nešto što ljudima fali, iako to još ne znaju imenovati.
         </Step>
-        <Step number="02" title="Onda crtam" className="ml-auto mt-20 md:absolute md:right-[12%] md:top-[53%] md:mt-0">
+        <Step number="02" title="Onda crtam" className="ml-auto mt-20 md:absolute md:right-[8%] md:top-[63%] md:mt-0 md:w-[340px]">
           Bez cenzure: mrlje, riječi i pogrešne linije. Ideja prvo mora smjeti biti ružna.
         </Step>
-        <Step number="03" title="Tražim razlog" className="mt-20 md:absolute md:bottom-[-15%] md:left-[20%] md:mt-0">
+        <Step number="03" title="Tražim razlog" className="mt-20 md:absolute md:bottom-[-12%] md:left-[18%] md:mt-0 md:w-[340px]">
           Kome ovo služi? Šta treba olakšati, objasniti ili učiniti toplijim?
         </Step>
 
         <Scribble
           viewBox="0 0 332 185"
           path="M5 48.8212C28.61 66.1212 62.44 82.0612 89.1 89.6412C94.9183 91.2955 119.11 94.4612 162.015 98.2962C201.472 101.823 227.93 97.5012 240.245 94.3462C257.268 89.9849 277.84 71.2812 290.81 57.6912C294.867 53.4402 295 40.9112 294.505 26.4212C294.242 18.7212 289.69 13.5212 285.2 8.19121C282.008 4.40242 274.05 4.82121 265.23 5.31621C253.602 5.9688 244.4 19.4212 234.03 33.7712C230.789 38.2564 231 46.7612 231.495 56.7512C232.127 69.5017 249.28 77.4612 258.135 81.4762C266.758 85.3858 277.94 86.4812 291.28 91.4662C305.92 96.937 317.94 104.781 323.655 113.121C330.66 123.344 323.02 138.781 319.68 146.626C316.147 154.924 309.36 162.781 301.2 169.466C299.02 170.811 297.04 171.801 294.37 172.971C291.7 174.141 288.4 175.461 283 179.821"
-          className="left-[32%] top-[43%] w-[26vw] max-w-[380px]"
+          className="left-[35%] top-[52%] w-[24vw] max-w-[360px]"
         />
         <Scribble
           viewBox="0 0 296 218"
           path="M5 21.5583C6.32 20.8983 14.92 16.9283 44.245 10.9333C99.2624 -0.314085 138.31 7.54829 142.965 9.37829C152.081 12.9619 164.58 20.5183 188.905 36.6533C210.283 50.8338 212.98 68.8183 214.165 81.3333C216.414 105.087 208.72 123.118 200.695 133.368C193.935 142.002 173.78 141.218 157.215 135.753C153.979 134.686 152.7 132.258 151.85 129.263C149.848 122.208 154.96 111.948 163.105 102.458C176.667 86.6564 203.56 87.5783 235.54 88.5433C261.985 89.3413 274.28 102.518 282.14 111.023C291.811 121.488 291 148.718 289.175 165.353C287.989 176.167 280.36 187.838 275.02 195.698C272.36 199.518 269.35 202.878 266.19 205.868C264.68 207.538 263.36 209.518 257 212.558"
-          className="bottom-[-5%] right-[29%] w-[22vw] rotate-[20deg]"
+          className="bottom-[-8%] right-[27%] w-[20vw] rotate-[20deg]"
         />
       </section>
 
