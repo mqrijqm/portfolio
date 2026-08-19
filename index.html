@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio Marije — grafički i web dizajn iz Banje Luke." />
+    <title>Marija — grafički i web dizajn</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/script.js" defer></script>
+  </head>
+  <body data-page="home">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Marija — početna">
+        MARIJA <span class="brand-mark" aria-hidden="true">◆</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Glavna navigacija">
+        <button class="nav-tab is-active" type="button" data-panel="about" data-i18n="nav.about">KO SAM JA</button>
+        <button class="nav-tab" type="button" data-panel="graphic" data-i18n="nav.graphic">GRAFIČKI</button>
+        <button class="nav-tab" type="button" data-panel="web" data-i18n="nav.web">WEB</button>
+        <button class="nav-tab" type="button" data-panel="design" data-i18n="nav.design">MOJ DIZAJN</button>
+        <a class="nav-contact" href="/kontakt.html" data-i18n="nav.contact">KONTAKT</a>
+      </nav>
+
+      <div class="language-switch" role="group" aria-label="Language">
+        <button type="button" data-language="hr" aria-pressed="true">HR</button>
+        <span>/</span>
+        <button type="button" data-language="en" aria-pressed="false">EN</button>
+      </div>
+    </header>
+
+    <main class="hero" aria-live="polite">
+      <div class="hero-rule" aria-hidden="true"></div>
+      <p class="hero-edition" data-i18n="hero.edition">PORTFOLIO · IZDANJE 01 · BANJA LUKA</p>
+
+      <section class="hero-panel is-active" id="about" data-panel-content="about">
+        <p class="panel-number">01</p>
+        <div class="panel-copy">
+          <p class="eyebrow" data-i18n="about.eyebrow">KO SAM JA</p>
+          <h1 data-i18n-html="about.title">Ideje pretvaram<br />u vizualni jezik.</h1>
+          <p class="panel-description" data-i18n="about.body">Grafička i web dizajnerica iz Banje Luke. Gradim identitete, editorijale i digitalna iskustva sa jasnim stavom.</p>
+        </div>
+        <figure class="hero-art hero-art--about">
+          <div class="portrait-frame">
+            <img src="/public/sapolja/derived/foto.jpg" alt="Marija, dizajnerica" />
+          </div>
+          <span class="art-caption" data-i18n="about.caption">DIZAJN · OD 2016.</span>
+        </figure>
+      </section>
+
+      <section class="hero-panel" id="graphic" data-panel-content="graphic" hidden>
+        <p class="panel-number">02</p>
+        <div class="panel-copy">
+          <p class="eyebrow" data-i18n="graphic.eyebrow">GRAFIČKI DIZAJN</p>
+          <h2 data-i18n-html="graphic.title">Identitet koji se<br />pamti na prvi pogled.</h2>
+          <p class="panel-description" data-i18n="graphic.body">Logotipi, sistemi identiteta, ambalaža i editorijal. Forma uvijek prati dobru ideju — nikad šablon.</p>
+          <p class="project-meta" data-i18n="graphic.meta">ODABRANI RAD · SAPOLJA · 2026.</p>
+        </div>
+        <figure class="hero-art hero-art--project">
+          <img src="/public/projects/sapolja/letak-lice.png" alt="SaPolja vizualni identitet" />
+        </figure>
+      </section>
+
+      <section class="hero-panel" id="web" data-panel-content="web" hidden>
+        <p class="panel-number">03</p>
+        <div class="panel-copy">
+          <p class="eyebrow" data-i18n="web.eyebrow">WEB DIZAJN</p>
+          <h2 data-i18n-html="web.title">Digitalno, ali<br />sa ljudskim rukopisom.</h2>
+          <p class="panel-description" data-i18n="web.body">Koncept, struktura, interakcija i razvoj. Sajtovi koji su jednostavni za korištenje, a nemogući za zamijeniti.</p>
+        </div>
+        <div class="hero-art browser-window" aria-hidden="true">
+          <div class="browser-bar"><i></i><i></i><i></i><span>marija.design</span></div>
+          <div class="browser-canvas"><span>M</span><strong data-i18n="web.mockup">IDEJA / SISTEM / POKRET</strong></div>
+        </div>
+      </section>
+
+      <section class="hero-panel" id="design" data-panel-content="design" hidden>
+        <p class="panel-number">04</p>
+        <div class="panel-copy">
+          <p class="eyebrow" data-i18n="design.eyebrow">MOJ DIZAJN</p>
+          <h2 data-i18n-html="design.title">Tiho ne znači<br />neprimjetno.</h2>
+          <p class="panel-description" data-i18n="design.body">Volim uredničku disciplinu, neočekivan detalj i dovoljno praznog prostora da ideja može disati.</p>
+        </div>
+        <blockquote class="hero-art manifesto" data-i18n-html="design.quote">“Manje dekoracije.<br />Više razloga.”</blockquote>
+      </section>
+
+      <div class="hero-footer">
+        <span data-i18n="hero.hint">IZABERI POGLAVLJE IZNAD</span>
+        <a href="/kontakt.html"><span data-i18n="hero.cta">IMAŠ PROJEKT?</span> <b>↗</b></a>
+      </div>
+    </main>
+
+    <div class="grain" aria-hidden="true"></div>
+  </body>
+</html>
