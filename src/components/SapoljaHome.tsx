@@ -6,6 +6,7 @@ import SapoljaLogotipSlogan from "@/components/sapolja-brend/SapoljaLogotipSloga
 import Slika from "@/components/sapolja-brend/Slika";
 import MockupStrip from "@/components/sapolja-brend/MockupStrip";
 import PaletaKolona from "@/components/sapolja-brend/PaletaKolona";
+import LogoProcess from "@/components/sapolja-brend/LogoProcess";
 import { A, BOJE, uCmyk, uRgb } from "@/lib/sapoljaBrend";
 
 export const metadata: Metadata = {
@@ -262,18 +263,7 @@ export default function SapoljaBrendPage() {
         </div>
       </section>
 
-      {/* Prazan kadar rezervisan za novu sekciju u pripremi. */}
-      <section
-        id="nova-sekcija"
-        aria-label="Rezervisano mjesto za novu sekciju"
-        className="order-4 min-h-[100svh] bg-[#FFFEFB] p-6 md:p-[3vw]"
-      >
-        <div className="relative h-[calc(100svh-3rem)] border border-dashed border-[color:var(--green)]/25 md:h-[calc(100svh-6vw)]">
-          <span className={`absolute left-5 top-5 opacity-35 ${NADNASLOV}`}>
-            FRAME — IN PROGRESS
-          </span>
-        </div>
-      </section>
+      <LogoProcess />
 
       {/* =========================== 6 · LETAK ============================ */}
       <section
