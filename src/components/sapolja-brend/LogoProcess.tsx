@@ -88,13 +88,14 @@ export default function LogoProcess() {
       </div>
 
       <div className="process-frame flex min-h-[115svh] items-center px-6 py-[14vh] md:px-[8vw]">
-        <div className="process-content mx-auto flex w-full max-w-[1260px] items-center justify-center gap-[2vw]">
-          <Image src={svg("construction-fruit.svg")} alt="Konstrukcija ploda" width={1380} height={860} className="min-w-0 flex-1" />
-          <span className="font-[family-name:var(--font-recoleta)] text-[clamp(28px,4vw,64px)]">+</span>
-          <Image src={svg("construction-fields.svg")} alt="Konstrukcija brazdi" width={1380} height={860} className="min-w-0 flex-1" />
-          <span className="font-[family-name:var(--font-recoleta)] text-[clamp(28px,4vw,64px)]">=</span>
-          <Image src={svg("construction-logo.svg")} alt="Završni SaPolja znak" width={1000} height={1000} className="min-w-0 flex-1" />
-        </div>
+        <Image
+          src={svg("logo-construction-clean.png")}
+          alt="Plod i brazde spojeni u završni SaPolja znak"
+          width={1536}
+          height={1024}
+          sizes="(min-width: 768px) 84vw, 100vw"
+          className="process-content mx-auto h-auto w-full max-w-[1536px] object-contain"
+        />
       </div>
 
       <div className="process-frame flex min-h-[125svh] items-center justify-center px-6 py-[16vh]">
