@@ -19,7 +19,7 @@ function Step({ number, title, children, className = "" }: StepProps) {
     <article
       className={`process-step relative z-10 max-w-[360px] border-l border-[#ad4e63]/30 pl-5 md:border-0 md:pl-0 ${className}`}
     >
-      <p className="font-[family-name:var(--font-gazpacho)] text-[clamp(38px,4.2vw,68px)] font-light leading-none text-[#ad4e63]">
+      <p className="inline-block -rotate-3 font-[family-name:var(--font-recoleta)] text-[clamp(46px,5vw,78px)] font-light italic leading-none tracking-[-0.06em] text-[#ad4e63]">
         {number}<span className="ml-1 text-[.65em]">·</span>
       </p>
       <h2 className="mt-3 font-[family-name:var(--font-inter)] text-[17px] font-semibold leading-tight text-[#2f3b34] sm:text-[20px]">
@@ -68,6 +68,15 @@ export default function ProcessStory() {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
+        gsap.to(".floating-note", {
+          y: 14,
+          rotation: 2.5,
+          duration: 2.8,
+          ease: "sine.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
+
         gsap.utils.toArray<HTMLElement>(".process-step").forEach((step) => {
           gsap.from(step, {
             opacity: 0,
@@ -127,8 +136,8 @@ export default function ProcessStory() {
     >
       {/* Ekran 01 — na 1440×1024 vidi se 01 i 02, a 03 ulazi na dnu. */}
       <section className="relative min-h-[100svh] px-6 pb-24 pt-28 sm:px-10 md:h-[100svh] md:px-[7vw] md:pb-0 md:pt-[9vh]">
-        <div className="relative z-10 flex items-start justify-between gap-8">
-          <div>
+        <div className="relative z-10 flex justify-center text-center">
+          <div className="flex flex-col items-center">
             <p className="font-[family-name:var(--font-inter)] text-[10px] uppercase tracking-[0.28em] text-[#ad4e63]">
               RADNI PROCES · 01—06
             </p>
@@ -139,10 +148,11 @@ export default function ProcessStory() {
               Kako ideja pronađe<br />svog čovjeka.
             </h1>
           </div>
-          <p className="hidden max-w-[190px] pt-2 text-right font-[family-name:var(--font-inter)] text-[10px] uppercase leading-[1.7] tracking-[0.18em] text-[#ad4e63] lg:block">
-            nije ravna linija —<br />i baš zato radi
-          </p>
         </div>
+
+        <p className="floating-note absolute right-6 top-[40vh] z-20 -rotate-2 rounded-[999px] bg-[#ad4e63] px-6 py-4 text-center font-[family-name:var(--font-recoleta)] text-[clamp(16px,1.6vw,25px)] italic leading-[1.15] text-[#fff8f1] shadow-[0_16px_40px_rgba(173,78,99,0.22)] md:right-[6vw] md:top-[27vh] md:px-7 md:py-5">
+          nije ravna linija —<br />i baš zato radi
+        </p>
 
         <Step number="01" title="Prvo primijetim" className="mt-16 md:absolute md:left-[11%] md:top-[50%] md:mt-0 md:w-[340px]">
           Neku prazninu. Nešto što ljudima fali, iako to još ne znaju imenovati.
@@ -211,4 +221,3 @@ export default function ProcessStory() {
     </section>
   );
 }
-

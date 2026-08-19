@@ -88,14 +88,31 @@ export default function LogoProcess() {
       </div>
 
       <div className="process-frame flex min-h-[115svh] items-center px-6 py-[14vh] md:px-[8vw]">
-        <Image
-          src={svg("logo-construction-clean.png")}
-          alt="Plod i brazde spojeni u završni SaPolja znak"
-          width={1536}
-          height={1024}
-          sizes="(min-width: 768px) 84vw, 100vw"
-          className="process-content mx-auto h-auto w-full max-w-[1536px] object-contain"
-        />
+        <div className="process-content mx-auto grid w-full max-w-[1320px] grid-cols-[0.8fr_auto_1.15fr_auto_1.5fr] items-center gap-[clamp(18px,4vw,76px)]">
+          <Image
+            src={svg("construction-apple-clean.svg")}
+            alt="Plod"
+            width={159}
+            height={197}
+            className="mx-auto h-auto w-full max-w-[230px]"
+          />
+          <span aria-hidden="true" className="font-[family-name:var(--font-recoleta)] text-[clamp(28px,4vw,58px)] font-light">+</span>
+          <Image
+            src={svg("construction-basket-clean.svg")}
+            alt="Brazde i korpa"
+            width={227}
+            height={146}
+            className="mx-auto h-auto w-full max-w-[330px]"
+          />
+          <span aria-hidden="true" className="font-[family-name:var(--font-recoleta)] text-[clamp(28px,4vw,58px)] font-light">=</span>
+          <Image
+            src={svg("construction-mark-clean.svg")}
+            alt="Završni SaPolja znak"
+            width={365}
+            height={411}
+            className="mx-auto h-auto w-full max-w-[430px]"
+          />
+        </div>
       </div>
 
       <div className="process-frame flex min-h-[125svh] items-center justify-center px-6 py-[16vh]">
