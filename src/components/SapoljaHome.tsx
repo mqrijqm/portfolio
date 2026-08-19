@@ -76,12 +76,12 @@ export default function SapoljaBrendPage() {
   return (
     <main
       style={tema}
-      className="font-[family-name:var(--font-inter)] text-[color:var(--green)]"
+      className="flex flex-col font-[family-name:var(--font-inter)] text-[color:var(--green)]"
     >
       {/* ============================ 1 · HERO ============================ */}
       <section
         id="hero"
-        className={`relative flex flex-col items-center justify-center bg-[color:var(--cream)] px-6 py-16 ${EKRAN}`}
+        className={`order-1 relative flex flex-col items-center justify-center bg-[color:var(--cream)] px-6 py-16 ${EKRAN}`}
       >
         <p
           className={`absolute left-6 top-16 text-[color:var(--green)] sm:top-20 ${NADNASLOV}`}
@@ -99,44 +99,41 @@ export default function SapoljaBrendPage() {
       {/* ======================= 2 · O PROJEKTU ========================== */}
       <section
         id="o-projektu"
-        className="min-h-[100svh] bg-[#F4F0E8] px-6 py-20 md:px-[7vw] md:py-[11vh]"
+        className="order-2 relative min-h-[150svh] overflow-hidden bg-[#F4F0E8] px-6 py-24 md:px-[7vw] md:py-[14vh]"
       >
-        <SapoljaLogotip
-          title="SaPolja"
-          className="w-[150px] text-[color:var(--green)] md:w-[190px]"
-        />
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-12">
+          <div className="md:col-span-8">
+            <p className={NADNASLOV}>01 — PROJEKAT / VIZUELNI IDENTITET</p>
+            <h2 className="mt-8 max-w-[10ch] font-[family-name:var(--font-recoleta)] text-[clamp(58px,8.4vw,138px)] leading-[0.88] tracking-[-0.045em]">
+              Lokalno, bez folklora.
+            </h2>
+          </div>
+        </div>
 
-        <div className="mt-6 border-t border-[color:var(--green)]/30" />
+        <div className="pointer-events-none absolute right-[-8vw] top-[36vh] w-[min(38vw,470px)] rotate-[5deg] md:right-[5vw] md:top-[18vh]" aria-hidden="true">
+          <Slika
+            medij={A.briefEnvelope}
+            sizes="(min-width: 768px) 34vw, 52vw"
+            fit="contain"
+            className="h-auto w-full drop-shadow-[0_30px_45px_rgba(14,46,35,0.15)]"
+          />
+        </div>
 
-        <div className="grid gap-16 py-12 md:grid-cols-[0.9fr_1.1fr] md:gap-[8vw] md:py-[8vh]">
-          <div>
+        <div className="relative z-10 mt-[42vh] grid gap-20 border-t border-[color:var(--green)]/25 pt-8 md:mt-[34vh] md:grid-cols-12 md:gap-y-[18vh]">
+          <div className="md:col-span-4 md:col-start-2">
             <p className={NADNASLOV}>ZADATAK</p>
-            <p className="mt-5 max-w-xl text-[15px] leading-[1.75] md:text-[17px]">
+            <p className="mt-6 text-[16px] leading-[1.8] md:text-[18px]">
               Osmislila sam vizuelni identitet za SaPolja — platformu koja
               povezuje male proizvođače iz našeg regiona sa stolovima ljudi u
               Banjoj Luci. Brend je trebalo da izgleda savremeno i pouzdano,
               ali da zadrži toplinu zemlje, pijace i hrane koju poznajemo.
             </p>
 
-            <p className={`mt-10 ${NADNASLOV}`}>VAŽNO</p>
-            <p className="mt-5 max-w-xl text-[15px] leading-[1.75] md:text-[17px]">
-              Cilj nije bio napraviti još jedan generičan „eko“ znak. Tražila
-              sam sistem koji govori o porijeklu i blizini bez rustikalnih
-              klišea — dovoljno jednostavan za aplikaciju, a dovoljno ljudski
-              za drvenu gajbu, papirnu kesu i letak.
-            </p>
-
-            <div className="mt-14 flex items-center justify-between gap-6 border-b border-[color:var(--green)]/30 pb-3">
-              <span className={NADNASLOV}>OBLAST</span>
-              <span className={`${NADNASLOV} text-right opacity-65`}>
-                BRENDING · VIZUELNI IDENTITET
-              </span>
-            </div>
           </div>
 
-          <div>
-            <p className={NADNASLOV}>IDEJA I RJEŠENJE</p>
-            <p className="mt-5 max-w-2xl text-[15px] leading-[1.75] md:text-[17px]">
+          <div className="md:col-span-5 md:col-start-7">
+            <p className={NADNASLOV}>IDEJA / RJEŠENJE</p>
+            <p className="mt-6 text-[16px] leading-[1.8] md:text-[18px]">
               Znak spaja tri slike u jednu: korpu, brazde i plod. Korpa govori
               o izboru i dostavi, brazde o radu proizvođača, a plod o svježini
               i rezultatu tog rada. Tako je nastao simbol koji može stajati
@@ -144,21 +141,34 @@ export default function SapoljaBrendPage() {
               ilustraciju i digitalne ikone.
             </p>
 
-            <p className={`mt-10 ${NADNASLOV}`}>ZAŠTO OVAKO</p>
-            <p className="mt-5 max-w-2xl text-[15px] leading-[1.75] md:text-[17px]">
+          </div>
+
+          <div className="md:col-span-4 md:col-start-2">
+            <p className={NADNASLOV}>ZAŠTO OVAKO</p>
+            <p className="mt-6 text-[16px] leading-[1.8] md:text-[18px]">
               Tamnozelena nosi povjerenje i prirodnost, krem boja daje osjećaj
               papira i svakodnevne bliskosti, dok terakota uvodi toplinu zrelog
               ploda. Recoleta omekšava geometriju znaka i daje brendu glas koji
               je miran, domaći i dostojanstven — bez nostalgije i bez folklora.
             </p>
 
-            <p className={`mt-10 ${NADNASLOV}`}>KOME JE NAMIJENJENO</p>
-            <p className="mt-5 max-w-2xl text-[15px] leading-[1.75] md:text-[17px]">
+          </div>
+
+          <div className="md:col-span-5 md:col-start-7">
+            <p className={NADNASLOV}>KOME JE NAMIJENJENO</p>
+            <p className="mt-6 text-[16px] leading-[1.8] md:text-[18px]">
               Ljudima koji žele znati odakle dolazi njihova hrana, porodicama
               koje kupuju lokalno i proizvođačima kojima je potreban direktan,
               jasan put do kupca. Identitet zato mora jednako dobro raditi na
               ekranu, ambalaži i na običnom komadu papira.
             </p>
+          </div>
+
+          <div className="flex items-center justify-between gap-6 border-b border-[color:var(--green)]/30 pb-3 md:col-span-10 md:col-start-2">
+            <span className={NADNASLOV}>OBLAST</span>
+            <span className={`${NADNASLOV} text-right opacity-65`}>
+              BRENDING · VIZUELNI IDENTITET
+            </span>
           </div>
         </div>
       </section>
@@ -166,7 +176,7 @@ export default function SapoljaBrendPage() {
       {/* ========================= 3 · VARIJANTE ========================== */}
       <section
         id="varijante"
-        className={`flex flex-col bg-white px-6 py-16 ${EKRAN}`}
+        className={`order-6 flex flex-col bg-white px-6 py-16 ${EKRAN}`}
       >
         <p className={`text-[color:var(--green)] ${NADNASLOV}`}>LOGO</p>
 
@@ -198,7 +208,7 @@ export default function SapoljaBrendPage() {
 
       {/* =========================== 4 · PALETA =========================== */}
       {/* Jedina sekcija koja ne drži pun ekran — polja su kvadrati. */}
-      <section id="paleta" className="grid grid-cols-2 md:grid-cols-4">
+      <section id="paleta" className="order-7 grid grid-cols-2 md:grid-cols-4">
         {PALETA.map((b) => (
           <PaletaKolona
             key={b.hex}
@@ -214,7 +224,7 @@ export default function SapoljaBrendPage() {
       </section>
 
       {/* ======================== 4 · TIPOGRAFIJA ========================= */}
-      <section id="tipografija" className={`flex flex-col ${EKRAN}`}>
+      <section id="tipografija" className={`order-3 flex flex-col ${EKRAN}`}>
         {/* --- gornja polovina: specimen sa konstrukcijskim vodilicama --- */}
         <div className="relative min-h-0 flex-1 overflow-hidden bg-[#FFFEFB] px-6 py-16">
           <div className="relative">
@@ -279,10 +289,23 @@ export default function SapoljaBrendPage() {
         </div>
       </section>
 
+      {/* Prazan kadar rezervisan za novu sekciju u pripremi. */}
+      <section
+        id="nova-sekcija"
+        aria-label="Rezervisano mjesto za novu sekciju"
+        className="order-4 min-h-[100svh] bg-[#FFFEFB] p-6 md:p-[3vw]"
+      >
+        <div className="relative h-[calc(100svh-3rem)] border border-dashed border-[color:var(--green)]/25 md:h-[calc(100svh-6vw)]">
+          <span className={`absolute left-5 top-5 opacity-35 ${NADNASLOV}`}>
+            FRAME — IN PROGRESS
+          </span>
+        </div>
+      </section>
+
       {/* =========================== 6 · LETAK ============================ */}
       <section
         id="letak"
-        className="flex min-h-[100svh] flex-col bg-[color:var(--green)] px-6 py-16 text-[color:var(--white)] md:h-[100svh]"
+        className="order-8 flex min-h-[100svh] flex-col bg-[color:var(--green)] px-6 py-16 text-[color:var(--white)] md:h-[100svh]"
       >
         <div className="flex items-baseline justify-between gap-6">
           <p className={NADNASLOV}>LETAK / FLYER</p>
@@ -319,7 +342,7 @@ export default function SapoljaBrendPage() {
       {/* ======================= 7 · ILUSTRACIJE ========================== */}
       <section
         id="ilustracije"
-        className="overflow-hidden bg-[color:var(--cream)] py-16"
+        className="order-5 overflow-hidden bg-[color:var(--cream)] py-16"
       >
         <div className="flex items-baseline justify-between gap-6 px-6 text-[color:var(--green)]">
           <p className={NADNASLOV}>ILUSTRACIJE PROIZVODA</p>
@@ -337,7 +360,7 @@ export default function SapoljaBrendPage() {
       </section>
 
       {/* ========================== 8 · PRIMJENE ========================== */}
-      <section id="primjene" className={`flex flex-col bg-white py-16 ${EKRAN}`}>
+      <section id="primjene" className={`order-9 flex flex-col bg-white py-16 ${EKRAN}`}>
         <p className={`px-6 text-[color:var(--green)] ${NADNASLOV}`}>PRIMJENE</p>
 
         {/* triptih ide od ivice do ivice, bez okvira */}
