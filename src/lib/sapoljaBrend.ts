@@ -74,8 +74,8 @@ export const A = {
   briefEnvelope: medij(
     "brief-envelope.png",
     "Green and Beige Minimalist Illustrative Vintage Coffee Shop Flyer (2).png",
-    442,
-    554,
+    1122,
+    1402,
     "SaPolja štampani materijali sa znakom i ilustracijama proizvoda",
   ),
   skice: medij(
