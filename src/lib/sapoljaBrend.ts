@@ -114,10 +114,10 @@ export const A = {
     "Znak u bijeloj boji preko fotografije njive",
   ),
   foto: medij(
-    "foto.jpg",
+    "foto-editorial.png",
     "DSC07524_1.JPG",
-    1616,
-    1080,
+    1935,
+    813,
     "Piknik na livadi — korpe sa povrćem, voćem i teglama",
   ),
   fotoRezerva: medij(

@@ -70,7 +70,7 @@ const PALETA = [
  */
 const VODILICE = {
   uspravne: ["36.5%", "39%", "78%", "81%"],
-  polozene: ["23.3%", "76.5%"],
+  polozene: ["3.5%", "81.5%"],
 };
 
 export default function SapoljaBrendPage() {
@@ -147,7 +147,33 @@ export default function SapoljaBrendPage() {
         ))}
       </section>
 
-      {/* ======================== 4 · TIPOGRAFIJA ========================= */}
+      {/* ============================ 4 · FOTO ============================ */}
+      <section id="foto" className={`relative overflow-hidden ${EKRAN}`}>
+        <Slika
+          medij={FOTO_POZADINA}
+          sizes="100vw"
+          className="absolute inset-0 h-full w-full"
+        />
+        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
+
+        <div className="relative flex h-full min-h-[100svh] flex-col items-center justify-center px-6 md:min-h-0">
+          <SapoljaMark
+            title="SaPolja znak"
+            className="w-[min(300px,48vw)] text-white md:w-[min(300px,24vw)]"
+          />
+          <p className="mt-6 font-[family-name:var(--font-inter)] text-[16px] font-medium uppercase tracking-[0.2em] text-white">
+            OD POLJA DO STOLA
+          </p>
+        </div>
+      </section>
+
+      {/* Miran prijelaz između fotografije i tehničkog tipografskog prikaza. */}
+      <div
+        aria-hidden="true"
+        className="h-[clamp(120px,18vw,320px)] bg-[#FFFEFB]"
+      />
+
+      {/* ======================== 5 · TIPOGRAFIJA ========================= */}
       <section id="tipografija" className={`flex flex-col ${EKRAN}`}>
         {/* --- gornja polovina: specimen sa konstrukcijskim vodilicama --- */}
         <div className="relative min-h-0 flex-1 overflow-hidden bg-[#FFFEFB] px-6 py-16">
@@ -210,26 +236,6 @@ export default function SapoljaBrendPage() {
               className="w-[min(360px,34vw)] text-[color:var(--green)]"
             />
           </div>
-        </div>
-      </section>
-
-      {/* ============================ 5 · FOTO ============================ */}
-      <section id="foto" className={`relative overflow-hidden ${EKRAN}`}>
-        <Slika
-          medij={FOTO_POZADINA}
-          sizes="100vw"
-          className="absolute inset-0 h-full w-full"
-        />
-        <div className="absolute inset-0 bg-black/25" aria-hidden="true" />
-
-        <div className="relative flex h-full min-h-[100svh] flex-col items-center justify-center px-6 md:min-h-0">
-          <SapoljaMark
-            title="SaPolja znak"
-            className="w-[min(300px,48vw)] text-white md:w-[min(300px,24vw)]"
-          />
-          <p className="mt-6 font-[family-name:var(--font-inter)] text-[16px] font-medium uppercase tracking-[0.2em] text-white">
-            OD POLJA DO STOLA
-          </p>
         </div>
       </section>
 
