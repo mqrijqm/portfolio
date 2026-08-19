@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import SapoljaLockup from "@/components/sapolja-brend/SapoljaLockup";
-import SapoljaMark from "@/components/sapolja-brend/SapoljaMark";
 import SapoljaLogotip from "@/components/sapolja-brend/SapoljaLogotip";
 import SapoljaLogotipSlogan from "@/components/sapolja-brend/SapoljaLogotipSlogan";
 import Slika from "@/components/sapolja-brend/Slika";
 import MockupStrip from "@/components/sapolja-brend/MockupStrip";
 import PaletaKolona from "@/components/sapolja-brend/PaletaKolona";
-import { A, BOJE, FOTO_POZADINA, uCmyk, uRgb } from "@/lib/sapoljaBrend";
+import { A, BOJE, uCmyk, uRgb } from "@/lib/sapoljaBrend";
 
 export const metadata: Metadata = {
   title: "SaPolja — brend identitet | Marija",
@@ -169,33 +168,7 @@ export default function SapoljaBrendPage() {
         ))}
       </section>
 
-      {/* ============================ 4 · FOTO ============================ */}
-      <section id="foto" className={`relative overflow-hidden ${EKRAN}`}>
-        <Slika
-          medij={FOTO_POZADINA}
-          sizes="100vw"
-          className="absolute inset-0 h-full w-full"
-        />
-        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
-
-        <div className="relative flex h-full min-h-[100svh] flex-col items-center justify-center px-6 md:min-h-0">
-          <SapoljaMark
-            title="SaPolja znak"
-            className="w-[min(300px,48vw)] text-white md:w-[min(300px,24vw)]"
-          />
-          <p className="mt-6 font-[family-name:var(--font-inter)] text-[16px] font-medium uppercase tracking-[0.2em] text-white">
-            OD POLJA DO STOLA
-          </p>
-        </div>
-      </section>
-
-      {/* Miran prijelaz između fotografije i tehničkog tipografskog prikaza. */}
-      <div
-        aria-hidden="true"
-        className="h-[clamp(120px,18vw,320px)] bg-[#FFFEFB]"
-      />
-
-      {/* ======================== 5 · TIPOGRAFIJA ========================= */}
+      {/* ======================== 4 · TIPOGRAFIJA ========================= */}
       <section id="tipografija" className={`flex flex-col ${EKRAN}`}>
         {/* --- gornja polovina: specimen sa konstrukcijskim vodilicama --- */}
         <div className="relative min-h-0 flex-1 overflow-hidden bg-[#FFFEFB] px-6 py-16">
