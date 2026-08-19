@@ -68,15 +68,6 @@ export default function ProcessStory() {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-        gsap.to(".floating-note", {
-          y: 14,
-          rotation: 2.5,
-          duration: 2.8,
-          ease: "sine.inOut",
-          repeat: -1,
-          yoyo: true,
-        });
-
         gsap.utils.toArray<HTMLElement>(".process-step").forEach((step) => {
           gsap.from(step, {
             opacity: 0,
@@ -149,10 +140,6 @@ export default function ProcessStory() {
             </h1>
           </div>
         </div>
-
-        <p className="floating-note absolute right-6 top-[40vh] z-20 -rotate-2 rounded-[999px] bg-[#ad4e63] px-6 py-4 text-center font-[family-name:var(--font-recoleta)] text-[clamp(16px,1.6vw,25px)] italic leading-[1.15] text-[#fff8f1] shadow-[0_16px_40px_rgba(173,78,99,0.22)] md:right-[6vw] md:top-[27vh] md:px-7 md:py-5">
-          nije ravna linija —<br />i baš zato radi
-        </p>
 
         <Step number="01" title="Prvo primijetim" className="mt-16 md:absolute md:left-[11%] md:top-[50%] md:mt-0 md:w-[340px]">
           Neku prazninu. Nešto što ljudima fali, iako to još ne znaju imenovati.
