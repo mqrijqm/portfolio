@@ -148,6 +148,20 @@ export const A = {
     1061,
     "Papirna traka oko veze kelja sa SaPolja znakom",
   ),
+  flyerFront: medij(
+    "flyer-front.png",
+    "letak-lice.png",
+    887,
+    1246,
+    "Prednja strana SaPolja letka sa znakom, logotipom i sloganom",
+  ),
+  flyerBack: medij(
+    "flyer-back.png",
+    "SaPolja-back-watermark-removed.png",
+    735,
+    1034,
+    "Zadnja strana SaPolja letka sa opisom načina rada i kontaktom",
+  ),
   pattern: medij(
     "pattern.png",
     "ChatGPT_Image_17__авг_2026__16_06_07.png",

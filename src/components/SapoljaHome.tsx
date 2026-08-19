@@ -130,7 +130,29 @@ export default function SapoljaBrendPage() {
         </div>
       </section>
 
-      {/* =========================== 3 · PALETA =========================== */}
+      {/* ========================== 3 · PROCES ============================ */}
+      <section
+        id="proces"
+        className={`flex flex-col bg-[#FFFEFB] px-6 py-16 ${EKRAN}`}
+      >
+        <div className="flex items-baseline justify-between gap-6 text-[color:var(--green)]">
+          <p className={NADNASLOV}>PROCES RADA</p>
+          <p className={`${NADNASLOV} text-right opacity-60`}>
+            SKICE I ISTRAŽIVANJE ZNAKA
+          </p>
+        </div>
+
+        <div className="mt-8 flex min-h-0 flex-1 items-center justify-center overflow-hidden">
+          <Slika
+            medij={A.skice}
+            sizes="(min-width: 768px) 70vw, 100vw"
+            fit="contain"
+            className="h-full w-full"
+          />
+        </div>
+      </section>
+
+      {/* =========================== 4 · PALETA =========================== */}
       {/* Jedina sekcija koja ne drži pun ekran — polja su kvadrati. */}
       <section id="paleta" className="grid grid-cols-2 md:grid-cols-4">
         {PALETA.map((b) => (
@@ -239,7 +261,44 @@ export default function SapoljaBrendPage() {
         </div>
       </section>
 
-      {/* ========================== 6 · PRIMJENE ========================== */}
+      {/* =========================== 6 · LETAK ============================ */}
+      <section
+        id="letak"
+        className="flex min-h-[100svh] flex-col bg-[color:var(--green)] px-6 py-16 text-[color:var(--white)] md:h-[100svh]"
+      >
+        <div className="flex items-baseline justify-between gap-6">
+          <p className={NADNASLOV}>LETAK / FLYER</p>
+          <p className={`${NADNASLOV} text-right opacity-60`}>
+            PREDNJA I ZADNJA STRANA
+          </p>
+        </div>
+
+        <div className="mt-8 grid min-h-0 flex-1 grid-cols-1 gap-10 md:grid-cols-2 md:gap-6">
+          {[
+            { medij: A.flyerFront, oznaka: "01 — LICE" },
+            { medij: A.flyerBack, oznaka: "02 — NALIČJE" },
+          ].map(({ medij, oznaka }) => (
+            <figure
+              key={oznaka}
+              className="flex min-h-[72svh] min-w-0 flex-col md:min-h-0"
+            >
+              <div className="min-h-0 flex-1 overflow-hidden bg-[#F5F0E7] p-3 md:p-5">
+                <Slika
+                  medij={medij}
+                  sizes="(min-width: 768px) 48vw, 100vw"
+                  fit="contain"
+                  className="h-full w-full drop-shadow-[0_18px_28px_rgba(0,0,0,0.18)]"
+                />
+              </div>
+              <figcaption className={`mt-3 ${NADNASLOV} opacity-70`}>
+                {oznaka}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      {/* ========================== 7 · PRIMJENE ========================== */}
       <section id="primjene" className={`flex flex-col bg-white py-16 ${EKRAN}`}>
         <p className={`px-6 text-[color:var(--green)] ${NADNASLOV}`}>PRIMJENE</p>
 
