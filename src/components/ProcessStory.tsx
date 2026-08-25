@@ -17,9 +17,9 @@ type StepProps = {
 function Step({ number, title, children, className = "" }: StepProps) {
   return (
     <article
-      className={`process-step relative z-10 max-w-[360px] border-l border-[#ad4e63]/30 pl-5 md:border-0 md:pl-0 ${className}`}
+      className={`process-step relative z-10 max-w-[360px] border-l border-[#1B3EA8]/30 pl-5 md:border-0 md:pl-0 ${className}`}
     >
-      <p className="inline-block -rotate-3 font-[family-name:var(--font-recoleta)] text-[clamp(46px,5vw,78px)] font-light italic leading-none tracking-[-0.06em] text-[#ad4e63]">
+      <p className="inline-block -rotate-3 font-[family-name:var(--font-recoleta)] text-[clamp(46px,5vw,78px)] font-light italic leading-none tracking-[-0.06em] text-[#E3A21B]">
         {number}<span className="ml-1 text-[.65em]">·</span>
       </p>
       <h2 className="mt-3 font-[family-name:var(--font-inter)] text-[17px] font-semibold leading-tight text-[#2f3b34] sm:text-[20px]">
@@ -50,7 +50,7 @@ function Scribble({ viewBox, path, className }: ScribbleProps) {
         className="process-line"
         d={path}
         pathLength="1"
-        stroke="#ad4e63"
+        stroke="#1B3EA8"
         strokeWidth="10"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -123,13 +123,28 @@ export default function ProcessStory() {
     <section
       ref={root}
       aria-labelledby="process-title"
-      className="relative overflow-hidden bg-[#f3eee6] text-[#2f3b34]"
+      className="relative isolate overflow-hidden text-[#2f3b34]"
     >
+      {/* Ista podloga kao hero — sekcije se nastavljaju jedna na drugu. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: "url(/hero/crayon-plava.webp)",
+          backgroundRepeat: "repeat",
+          backgroundSize: "clamp(190px, 21vw, 320px)",
+        }}
+      />
+      {/* Izmaglica preko šrafure — tekst mora da se čita. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-0 bg-white/62"
+      />
       {/* Ekran 01 — na 1440×1024 vidi se 01 i 02, a 03 ulazi na dnu. */}
       <section className="relative min-h-[100svh] px-6 pb-24 pt-28 sm:px-10 md:h-[100svh] md:px-[7vw] md:pb-0 md:pt-[9vh]">
         <div className="relative z-10 flex justify-center text-center">
           <div className="flex flex-col items-center">
-            <p className="font-[family-name:var(--font-inter)] text-[10px] uppercase tracking-[0.28em] text-[#ad4e63]">
+            <p className="font-[family-name:var(--font-inter)] text-[10px] uppercase tracking-[0.28em] text-[#1B3EA8]">
               RADNI PROCES · 01—06
             </p>
             <h1
@@ -199,10 +214,10 @@ export default function ProcessStory() {
         />
 
         <div className="absolute bottom-[8vh] left-[7vw] right-[7vw] flex items-end justify-between border-t border-[#2f3b34]/20 pt-5">
-          <p className="font-[family-name:var(--font-inter)] text-[10px] uppercase tracking-[0.24em] text-[#ad4e63]">
+          <p className="font-[family-name:var(--font-inter)] text-[10px] uppercase tracking-[0.24em] text-[#1B3EA8]">
             A onda sve počinje ponovo.
           </p>
-          <span className="font-[family-name:var(--font-gazpacho)] text-4xl font-light text-[#ad4e63]">↓</span>
+          <span className="font-[family-name:var(--font-gazpacho)] text-4xl font-light text-[#1B3EA8]">↓</span>
         </div>
       </section>
     </section>

@@ -8,6 +8,7 @@ import MockupStrip from "@/components/sapolja-brend/MockupStrip";
 import PaletaKolona from "@/components/sapolja-brend/PaletaKolona";
 import LogoProcess from "@/components/sapolja-brend/LogoProcess";
 import ProcessStory from "@/components/ProcessStory";
+import Hero from "@/components/hero/Hero";
 import { A, BOJE, uCmyk, uRgb } from "@/lib/sapoljaBrend";
 
 export const metadata: Metadata = {
@@ -80,10 +81,7 @@ export default function SapoljaBrendPage() {
       style={tema}
       className="flex flex-col font-[family-name:var(--font-inter)] text-[color:var(--green)]"
     >
-      <section
-        aria-hidden="true"
-        className="min-h-[100svh] bg-[#ad4e63]"
-      />
+      <Hero />
 
       <ProcessStory />
 

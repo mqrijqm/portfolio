@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import Nav from "@/components/Nav";
 
 /** Gazpacho nosi ceo sajt — naslovi, tekst, sve osim sitnih oznaka. */
 const gazpacho = localFont({
@@ -55,7 +54,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${gazpacho.variable} ${inter.variable} ${recoleta.variable} antialiased`}
     >
       <body className="min-h-full">
-        <Nav />
         <SmoothScroll>{children}</SmoothScroll>
 
         {/* Jedva vidljivo zrno preko celog sajta */}
