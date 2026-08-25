@@ -45,7 +45,7 @@ const ZVEZDE: Komad[] = [
 
 const KRSTICI: Komad[] = [
   { poz: { left: "7%", top: "46%" }, w: "clamp(12px,1.5vw,26px)", rot: 8 },
-  { poz: { right: "8%", top: "54%" }, w: "clamp(11px,1.4vw,23px)", rot: -14, samoDesktop: true },
+  { poz: { right: "6%", top: "70%" }, w: "clamp(11px,1.4vw,23px)", rot: -14, samoDesktop: true },
   { poz: { left: "46%", top: "14%" }, w: "clamp(10px,1.2vw,20px)", rot: 16, samoDesktop: true },
 ];
 
@@ -129,7 +129,7 @@ export default function Hero() {
     <section
       ref={koren}
       aria-label="Naslovna"
-      className="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden px-5 py-[8svh]"
+      className="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden px-5 py-[4svh]"
       style={{ color: MASTILO }}
     >
       {/* ---------------- podloga: plava bojica ---------------- */}
@@ -200,17 +200,17 @@ export default function Hero() {
       </div>
 
       {/* ---------------- sadržaj: isečak levo, tekst desno ---------------- */}
-      <div className="relative z-10 mx-auto grid w-full max-w-[1380px] items-center gap-10 md:grid-cols-[1.05fr_1fr] md:gap-8 lg:gap-16">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1380px] items-center gap-10 md:grid-cols-[1.35fr_0.9fr] md:gap-6 lg:gap-10">
         {/* Isečak je nakrivljen — zalepljen, ne poravnat. */}
-        <div data-isecak className="mx-auto w-full max-w-[430px] md:mx-0 md:ml-[3%] lg:max-w-[470px]">
+        <div data-isecak className="mx-auto w-full max-w-[500px] md:mx-0 md:ml-[15%] md:w-auto md:max-w-none">
           <Image
             src="/hero/marija-isecak.webp"
             alt="Marija kao dete, crta olovkom u svesci"
             width={880}
             height={1160}
             priority
-            sizes="(max-width: 768px) 82vw, 46vw"
-            className="h-auto w-full -rotate-[7deg] drop-shadow-[0_22px_34px_rgba(20,40,90,0.2)]"
+            sizes="(max-width: 768px) 82vw, 52vw"
+            className="h-auto w-full -rotate-[7deg] drop-shadow-[0_22px_34px_rgba(20,40,90,0.2)] md:h-[min(86svh,860px)] md:w-auto"
           />
         </div>
 
@@ -226,7 +226,7 @@ export default function Hero() {
 
           <p
             data-tekst
-            className="max-w-[16ch] font-[family-name:var(--font-gazpacho)] text-[clamp(2rem,4.4vw,3.6rem)] font-light italic leading-[1.08] tracking-[-0.02em]"
+            className="max-w-[18ch] font-[family-name:var(--font-gazpacho)] text-[clamp(1.45rem,2.7vw,2.3rem)] font-light italic leading-[1.15] tracking-[-0.01em]"
           >
             Crtam otkad znam da držim olovku.
           </p>

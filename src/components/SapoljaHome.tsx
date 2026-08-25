@@ -9,6 +9,7 @@ import PaletaKolona from "@/components/sapolja-brend/PaletaKolona";
 import LogoProcess from "@/components/sapolja-brend/LogoProcess";
 import ProcessStory from "@/components/ProcessStory";
 import Hero from "@/components/hero/Hero";
+import Ilustracija from "@/components/sections/Ilustracija";
 import { A, BOJE, uCmyk, uRgb } from "@/lib/sapoljaBrend";
 
 export const metadata: Metadata = {
@@ -84,6 +85,8 @@ export default function SapoljaBrendPage() {
       <Hero />
 
       <ProcessStory />
+
+      <Ilustracija />
 
       {/* ============================ 1 · HERO ============================ */}
       <section
