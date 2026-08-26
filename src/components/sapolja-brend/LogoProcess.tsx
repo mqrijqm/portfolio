@@ -5,7 +5,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import SapoljaMark from "@/components/sapolja-brend/SapoljaMark";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -38,17 +37,6 @@ export default function LogoProcess() {
             },
           );
         });
-
-        gsap.to(".garlic-image", {
-          yPercent: 8,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".photo-frame",
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
-          },
-        });
       });
 
       mm.add("(max-width: 767px) and (prefers-reduced-motion: no-preference)", () => {
@@ -69,24 +57,6 @@ export default function LogoProcess() {
 
   return (
     <section ref={root} id="konstrukcija-znaka" className="order-4 bg-[#FFFEFB]">
-      <div className="process-frame photo-frame flex min-h-[115svh] items-center px-6 py-[12vh] md:px-[4vw]">
-        <div className="process-content relative mx-auto aspect-[3/2] w-full overflow-hidden bg-[color:var(--green)]">
-          <Image
-            src={svg("garlic-editorial.jpg")}
-            alt="Ilustracija bijelog luka i zelenog lišća"
-            fill
-            sizes="92vw"
-            className="garlic-image scale-[1.12] object-cover"
-            priority={false}
-          />
-          <div className="absolute inset-0 bg-black/10" />
-          <SapoljaMark
-            title="SaPolja znak"
-            className="absolute left-1/2 top-1/2 w-[clamp(110px,17vw,250px)] -translate-x-1/2 -translate-y-1/2 text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.2)]"
-          />
-        </div>
-      </div>
-
       <div className="process-frame flex min-h-[115svh] items-center px-6 py-[14vh] md:px-[8vw]">
         <div className="process-content mx-auto grid w-full max-w-[1320px] grid-cols-[0.8fr_auto_1.15fr_auto_1.5fr] items-center gap-[clamp(18px,4vw,76px)]">
           <Image
@@ -96,7 +66,7 @@ export default function LogoProcess() {
             height={197}
             className="mx-auto h-auto w-full max-w-[230px]"
           />
-          <span aria-hidden="true" className="font-[family-name:var(--font-recoleta)] text-[clamp(28px,4vw,58px)] font-light">+</span>
+          <span aria-hidden="true" className="font-[family-name:var(--font-inter)] text-[clamp(28px,4vw,52px)] font-light">+</span>
           <Image
             src={svg("construction-basket-clean.svg")}
             alt="Brazde i korpa"
@@ -104,7 +74,7 @@ export default function LogoProcess() {
             height={146}
             className="mx-auto h-auto w-full max-w-[330px]"
           />
-          <span aria-hidden="true" className="font-[family-name:var(--font-recoleta)] text-[clamp(28px,4vw,58px)] font-light">=</span>
+          <span aria-hidden="true" className="font-[family-name:var(--font-inter)] text-[clamp(28px,4vw,52px)] font-light">=</span>
           <Image
             src={svg("construction-mark-clean.svg")}
             alt="Završni SaPolja znak"
