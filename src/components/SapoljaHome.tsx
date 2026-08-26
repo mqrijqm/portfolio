@@ -7,6 +7,7 @@ import Slika from "@/components/sapolja-brend/Slika";
 import MockupStrip from "@/components/sapolja-brend/MockupStrip";
 import PaletaKolona from "@/components/sapolja-brend/PaletaKolona";
 import LogoProcess from "@/components/sapolja-brend/LogoProcess";
+import LetakScena from "@/components/sapolja-brend/LetakScena";
 import ProcessStory from "@/components/ProcessStory";
 import Hero from "@/components/hero/Hero";
 import Ilustracija from "@/components/sections/Ilustracija";
@@ -116,16 +117,16 @@ export default function SapoljaBrendPage() {
             <p className={`${NADNASLOV} tracking-[0.22em]`}>O PROJEKTU</p>
             <h2 className="mt-7 max-w-[17ch] font-[family-name:var(--font-recoleta)] text-[clamp(38px,5vw,78px)] italic leading-[1.08] tracking-[-0.025em]">
               Vizuelni identitet koji povezuje{" "}
-              <span className="relative inline-block whitespace-nowrap px-[0.08em] not-italic">
+              <span className="relative inline-block whitespace-nowrap px-[0.08em] not-italic text-[color:var(--terracotta)]">
                 porijeklo
-                <span aria-hidden="true" className="absolute -inset-x-[0.12em] -inset-y-[0.02em] rounded-[50%] border-[1.5px] border-[color:var(--green)] rotate-[-4deg]" />
-                <span aria-hidden="true" className="absolute -inset-x-[0.18em] inset-y-[0.05em] rounded-[48%] border border-[color:var(--green)] rotate-[3deg]" />
+                <span aria-hidden="true" className="absolute -inset-x-[0.12em] -inset-y-[0.02em] rounded-[50%] border-[1.5px] border-[color:var(--terracotta)] rotate-[-4deg]" />
+                <span aria-hidden="true" className="absolute -inset-x-[0.18em] inset-y-[0.05em] rounded-[48%] border border-[color:var(--terracotta)] rotate-[3deg]" />
               </span>
               ,{" "}
-              <span className="relative inline-block whitespace-nowrap px-[0.08em]">
+              <span className="relative inline-block whitespace-nowrap px-[0.08em] text-[color:var(--terracotta)]">
                 bliskost
-                <span aria-hidden="true" className="absolute -inset-x-[0.14em] -inset-y-[0.04em] rounded-[52%] border-[1.5px] border-[color:var(--green)] rotate-[5deg]" />
-                <span aria-hidden="true" className="absolute -inset-x-[0.2em] inset-y-[0.02em] rounded-[47%] border border-[color:var(--green)] rotate-[-2deg]" />
+                <span aria-hidden="true" className="absolute -inset-x-[0.14em] -inset-y-[0.04em] rounded-[52%] border-[1.5px] border-[color:var(--terracotta)] rotate-[5deg]" />
+                <span aria-hidden="true" className="absolute -inset-x-[0.2em] inset-y-[0.02em] rounded-[47%] border border-[color:var(--terracotta)] rotate-[-2deg]" />
               </span>{" "}
               i svrhu.
             </h2>
@@ -159,7 +160,7 @@ export default function SapoljaBrendPage() {
       {/* ========================= 3 · VARIJANTE ========================== */}
       <section
         id="varijante"
-        className={`order-6 flex flex-col bg-white px-6 py-16 ${EKRAN}`}
+        className={`order-5 flex flex-col bg-white px-6 py-16 ${EKRAN}`}
       >
         <p className={`text-[color:var(--green)] ${NADNASLOV}`}>LOGO</p>
 
@@ -277,7 +278,7 @@ export default function SapoljaBrendPage() {
       {/* =========================== 6 · LETAK ============================ */}
       <section
         id="letak"
-        className="order-8 flex min-h-[100svh] flex-col bg-[color:var(--green)] px-6 py-16 text-[color:var(--white)] md:h-[100svh]"
+        className="order-8 flex min-h-[120svh] flex-col bg-[color:var(--green)] px-6 py-[14vh] text-[color:var(--white)] md:min-h-[130svh] md:px-[8vw] md:py-[16vh]"
       >
         <div className="flex items-baseline justify-between gap-6">
           <p className={NADNASLOV}>LETAK / FLYER</p>
@@ -286,35 +287,22 @@ export default function SapoljaBrendPage() {
           </p>
         </div>
 
-        <div className="mt-8 grid min-h-0 flex-1 grid-cols-1 gap-10 md:grid-cols-2 md:gap-6">
-          {[
-            { medij: A.flyerFront, oznaka: "LICE" },
-            { medij: A.flyerBack, oznaka: "NALIČJE" },
-          ].map(({ medij, oznaka }) => (
-            <figure
-              key={oznaka}
-              className="flex min-h-[72svh] min-w-0 flex-col md:min-h-0"
-            >
-              <div className="min-h-0 flex-1 overflow-hidden bg-[#F5F0E7] p-3 md:p-5">
-                <Slika
-                  medij={medij}
-                  sizes="(min-width: 768px) 48vw, 100vw"
-                  fit="contain"
-                  className="h-full w-full drop-shadow-[0_18px_28px_rgba(0,0,0,0.18)]"
-                />
-              </div>
-              <figcaption className={`mt-3 ${NADNASLOV} opacity-70`}>
-                {oznaka}
-              </figcaption>
-            </figure>
-          ))}
+        {/* Model nosi cijelu sredinu sekcije — prazan prostor oko njega je dio
+            kadra, ne propust. Canvas mora imati zadatu visinu jer se sam ne
+            razvlači po sadržaju. */}
+        <div className="relative mt-[8vh] min-h-[62svh] flex-1 md:mt-[10vh] md:min-h-[68svh]">
+          <LetakScena />
         </div>
+
+        <p className={`mt-[8vh] ${NADNASLOV} opacity-50 md:mt-[10vh]`}>
+          PREVUCI ZA ROTACIJU
+        </p>
       </section>
 
       {/* ======================= 7 · ILUSTRACIJE ========================== */}
       <section
         id="ilustracije"
-        className="order-5 overflow-hidden bg-[color:var(--cream)] py-16"
+        className="order-6 overflow-hidden bg-[color:var(--cream)] py-16"
       >
         <div className="flex items-baseline justify-between gap-6 px-6 text-[color:var(--green)]">
           <p className={NADNASLOV}>ILUSTRACIJE PROIZVODA</p>
