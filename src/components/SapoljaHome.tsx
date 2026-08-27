@@ -276,27 +276,31 @@ export default function SapoljaBrendPage() {
       <LogoProcess />
 
       {/* =========================== 6 · LETAK ============================ */}
+      {/* Scena se u sekciji lijepi (sticky): letak ostaje pred očima dok skrol
+          prolazi kroz sekciju, a taj skrol vodi kameru kroz četiri kadra —
+          lice, krupno na logo, odmak i okret, krupno na ilustracije. Zato je
+          sekcija ovoliko visoka: svakom kadru treba prostora da se odigra. */}
       <section
         id="letak"
-        className="order-8 flex min-h-[120svh] flex-col bg-[color:var(--green)] px-6 py-[14vh] text-[color:var(--white)] md:min-h-[130svh] md:px-[8vw] md:py-[16vh]"
+        className="relative order-8 h-[340svh] bg-[color:var(--green)] text-[color:var(--white)] md:h-[400svh]"
       >
-        <div className="flex items-baseline justify-between gap-6">
-          <p className={NADNASLOV}>LETAK / FLYER</p>
-          <p className={`${NADNASLOV} text-right opacity-60`}>
-            PREDNJA I ZADNJA STRANA
+        <div className="sticky top-0 flex h-[100svh] flex-col px-6 py-[5vh] md:px-[8vw] md:py-[6vh]">
+          <div className="flex items-baseline justify-between gap-6">
+            <p className={NADNASLOV}>LETAK / FLYER</p>
+            <p className={`${NADNASLOV} text-right opacity-60`}>
+              PREDNJA I ZADNJA STRANA
+            </p>
+          </div>
+
+          {/* Canvas mora imati zadatu visinu jer se sam ne razvlači po sadržaju. */}
+          <div className="relative mt-[3vh] min-h-0 flex-1">
+            <LetakScena />
+          </div>
+
+          <p className={`mt-[3vh] ${NADNASLOV} opacity-50`}>
+            SKROLUJ ILI PREVUCI ZA ROTACIJU
           </p>
         </div>
-
-        {/* Model nosi cijelu sredinu sekcije — prazan prostor oko njega je dio
-            kadra, ne propust. Canvas mora imati zadatu visinu jer se sam ne
-            razvlači po sadržaju. */}
-        <div className="relative mt-[8vh] min-h-[62svh] flex-1 md:mt-[10vh] md:min-h-[68svh]">
-          <LetakScena />
-        </div>
-
-        <p className={`mt-[8vh] ${NADNASLOV} opacity-50 md:mt-[10vh]`}>
-          PREVUCI ZA ROTACIJU
-        </p>
       </section>
 
       {/* ======================= 7 · ILUSTRACIJE ========================== */}
