@@ -14,12 +14,14 @@ const gazpacho = localFont({
   ],
   variable: "--font-gazpacho-raw",
   display: "swap",
+  preload: false,
 });
 
 const recoleta = localFont({
   src: "../fonts/Recoleta-Regular.otf",
   variable: "--font-recoleta",
   display: "swap",
+  preload: false,
 });
 
 const inter = Inter({
@@ -44,6 +46,18 @@ export const metadata: Metadata = {
       "Identiteti, plakati, editorijal i sajtovi. Banja Luka.",
     locale: "sr_RS",
     type: "website",
+    images: [
+      {
+        url: "/sapolja/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Marija — grafički i web dizajn",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/sapolja/opengraph-image.png"],
   },
 };
 

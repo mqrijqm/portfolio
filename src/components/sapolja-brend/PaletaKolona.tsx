@@ -62,12 +62,13 @@ export default function PaletaKolona({
     <button
       type="button"
       onClick={kopiraj}
-      aria-label={`Kopiraj ${hex} — ${ime}`}
+      title={`Kopiraj ${hex}`}
       className={`relative flex aspect-square cursor-pointer flex-col justify-end p-6 text-left ${
         linija ? "border border-[color:var(--green)]/15" : ""
       }`}
       style={{ background: pozadina, color: tekst }}
     >
+      <span className="sr-only">Klikom kopiraj HEX. </span>
       <span className="font-[family-name:var(--font-inter)] text-[14px] font-semibold">
         {ime}
       </span>
@@ -80,12 +81,16 @@ export default function PaletaKolona({
       </span>
 
       <span
+        aria-hidden="true"
         aria-live="polite"
         className={`absolute left-6 top-6 font-[family-name:var(--font-inter)] text-[12px] uppercase tracking-[0.08em] transition-opacity duration-200 ${
           kopirano ? "opacity-100" : "opacity-0"
         }`}
       >
         kopirano
+      </span>
+      <span className="sr-only" aria-live="polite">
+        {kopirano ? `${hex} je kopiran.` : ""}
       </span>
     </button>
   );

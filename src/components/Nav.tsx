@@ -7,13 +7,16 @@ import { SteppedDiamond } from "@/components/Motifs";
  * Na početnoj su to obična sidra — Lenis ih hvata preko `anchors` i skroluje
  * glatko. Sa /brending treba natrag na početak, pa sidro dobija prefiks /:
  * tada navigacija menja stranicu, a SmoothScroll posle preuzme hash i pomakne
- * se na sekciju. BRENDING je jedina stavka koja vodi na drugu stranicu.
+ * se na sekciju.
+ *
+ * Sidra `e-com` i `kontakt` više ne postoje na početnoj (stari dizajn je
+ * uklonjen), zato KONTAKT vodi na stranicu, a RAD na novu sekciju radova.
  */
 const STAVKE = [
   { ime: "HERO", kratko: "HERO", sidro: "hero" },
-  { ime: "E-COM PLATFORME", kratko: "E-COM", sidro: "e-com" },
+  { ime: "RAD", kratko: "RAD", sidro: "radovi" },
   { ime: "BRENDING", kratko: "BRENDING", stranica: "/brending" },
-  { ime: "KONTAKT", kratko: "KONTAKT", sidro: "kontakt" },
+  { ime: "KONTAKT", kratko: "KONTAKT", stranica: "/kontakt" },
 ] as const;
 
 export default function Nav() {

@@ -1,0 +1,10 @@
+# Lokalni snimci korišćeni tokom WebGL provere.
+/*.png
+
+# Izvorni Boxshot/Adobe fajlovi. Sajt koristi optimizovane kopije iz
+# public/sapolja/derived i jedino letak.glb iz ovog direktorijuma.
+/public/sapolja/*.png
+/public/sapolja/*.jpg
+/public/sapolja/*.JPG
+/public/sapolja/*.svg
+/public/sapolja/*.webp

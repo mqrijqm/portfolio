@@ -9,24 +9,215 @@
   --color-forest-soft: #64705f;
   --color-clay: #a2402c;
 
+  /* Paleta preuzeta sa brilean.com — boje i odnosi su njihovi, ime je naše.
+     ink = skoro crna, paper = topla bijela, acid = žuta, flare = narandžasta,
+     mute = siva za sporedne napomene i prvi red naslova.
+     Siva skala je njihova (gray-50 … gray-950) samo preimenovana da ne bi
+     pregazila Tailwind-ovu podrazumevanu gray paletu. */
+  --color-ink: #1a1918;
+  --color-paper: #f9f9f9;
+  --color-acid: #f1ff66;
+  --color-flare: #fe531d;
+  --color-mute: #6b6b6b;
+
+  --color-haze: #f2f2f2; /* gray-45 — podloga tijela */
+  --color-mist: #ebebeb; /* gray-50 — uppertitle, kartice */
+  --color-fog: #dfdfdf; /* gray-100 — hover redova */
+  --color-steel: #d1d1d1; /* gray-200 — ivice kartica */
+  --color-silver: #c4c4c4; /* gray-300 */
+  --color-smoke: #ababab; /* gray-500 — prvi red naslova */
+  --color-ash: #919191; /* gray-700 */
+  --color-slate: #787878; /* gray-900 — neaktivni koraci procesa */
+
   --font-gazpacho: var(--font-gazpacho-raw), Georgia, serif;
+
+  /* Brilean koristi dva sans fonta (TT Hoves Pro i Ease Semi Display),
+     oba komercijalna. Inter je najbliža slobodna zamjena — razvući
+     tracking na -0.07em na display veličinama da dobije istu guštinu. */
+  --font-display: var(--font-inter), Arial, sans-serif;
 }
 
 html {
-  background-color: var(--color-linen);
+  background-color: var(--color-haze);
   -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background-color: var(--color-linen);
-  color: var(--color-forest);
-  font-family: var(--font-gazpacho);
+  background-color: var(--color-haze);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
   overflow-x: clip;
 }
 
 ::selection {
-  background: var(--color-clay);
-  color: var(--color-linen-light);
+  background: var(--color-ink);
+  color: var(--color-acid);
+}
+
+/* ---------------------------------------------------------------
+   Brilean tipografija — h1 … h6 skaliraju se preko clamp-a, svi
+   tanki (400), display redovi idu uz negativan tracking.
+   Inter je gušći od njihovog Ease Semi Display, pa tracking kroz
+   clamp juri oko -0.06em na najvećim veličinama.
+   --------------------------------------------------------------- */
+.h1 {
+  font-size: clamp(3.75rem, 9vw, 7rem);
+  line-height: 1;
+  letter-spacing: -0.07em;
+  font-weight: 400;
+}
+
+.h2 {
+  font-size: clamp(2.75rem, 6vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  font-weight: 400;
+}
+
+.h3 {
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+
+.h4 {
+  font-size: clamp(1.75rem, 3.4vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+
+.h6 {
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+.text-lg-brilean {
+  font-size: clamp(1.125rem, 1.6vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* Mala siva etiketa iznad sekcije — njihov .uppertitle */
+.uppertitle {
+  display: inline-block;
+  width: fit-content;
+  background-color: var(--color-mist);
+  color: var(--color-ink);
+  border-radius: 0.125rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+/* Tamna varijanta etikete — za sekcije na ink pozadini */
+.uppertitle-tamna {
+  background-color: transparent;
+  color: var(--color-paper);
+  border: 1px solid rgb(249 249 249 / 28%);
+}
+
+/* ---------------------------------------------------------------
+   Proces (Kako radim) — aktivni korak bude bijel, opis se otvara
+   ispod njega preko grid-rows tranzicije (0fr → 1fr), što radi
+   i sa scrub-animacijom bez mjerenja visine u JS-u.
+   --------------------------------------------------------------- */
+.korak-naslov {
+  color: var(--color-slate);
+  transition: color 0.45s ease;
+}
+
+.korak-broj {
+  color: var(--color-mute);
+  transition: color 0.45s ease;
+}
+
+.korak-je-aktivan .korak-naslov {
+  color: var(--color-paper);
+}
+
+.korak-je-aktivan .korak-broj {
+  color: var(--color-acid);
+}
+
+.korak-opis {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.5s cubic-bezier(0.625, 0.05, 0, 1),
+    opacity 0.4s ease;
+}
+
+.korak-je-aktivan .korak-opis {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.korak-opis > div {
+  overflow: hidden;
+}
+
+/* Bez pina (mobilno) sve je otvoreno odjednom */
+@media (max-width: 1023px) {
+  .korak-naslov {
+    color: var(--color-paper);
+  }
+  .korak-broj {
+    color: var(--color-acid);
+  }
+  .korak-opis {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proces-staza {
+    height: auto;
+  }
+  .korak-naslov {
+    color: var(--color-paper);
+  }
+  .korak-broj {
+    color: var(--color-acid);
+  }
+  .korak-opis {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+}
+
+/* Podvlačenje koje se vuče s lijeva na desno — njihov [data-underline-link] */
+.ulink {
+  text-decoration: none;
+  position: relative;
+}
+
+.ulink::before {
+  content: "";
+  position: absolute;
+  bottom: -0.0625em;
+  left: 0;
+  width: 100%;
+  height: 0.0625em;
+  background-color: currentColor;
+  transform-origin: left;
+  transform: scaleX(0) rotate(0.001deg);
+  transition: transform 0.735s cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ulink:hover::before {
+    transform: scaleX(1) rotate(0.001deg);
+  }
 }
 
 /* ---------------------------------------------------------------
