@@ -1,5 +1,5 @@
-import SapoljaHome from "@/components/SapoljaHome";
+import Landing from "@/components/Landing";
 
 export default function Home() {
-  return <SapoljaHome />;
+  return <Landing />;
 }

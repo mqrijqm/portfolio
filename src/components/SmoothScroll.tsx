@@ -17,11 +17,21 @@ export default function SmoothScroll({
   const lenisRef = useRef<any>(null);
   const pathname = usePathname();
 
-  // Pri prelasku na novu stranicu Lenis drži staru poziciju skrola —
-  // zato je ručno vraćamo na vrh i preračunavamo ScrollTrigger merenja.
+  // Pri prelasku na novu stranicu Lenis drži staru poziciju skrola — zato je
+  // ručno vraćamo na vrh i preračunavamo ScrollTrigger merenja. Iznimka je
+  // dolazak sa sidrom (npr. /#hero sa /brending): tada se ne vraćamo na vrh
+  // nego na samu sekciju, inače bi svaka promena stranice obrisala hash.
   useEffect(() => {
-    lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
     ScrollTrigger.refresh();
+
+    const lenis = lenisRef.current?.lenis;
+    if (!lenis) return;
+
+    const hash = window.location.hash;
+    const cilj = hash ? document.getElementById(hash.slice(1)) : null;
+
+    if (cilj) lenis.scrollTo(cilj, { immediate: true });
+    else lenis.scrollTo(0, { immediate: true });
   }, [pathname]);
 
   useEffect(() => {

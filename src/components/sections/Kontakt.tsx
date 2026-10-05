@@ -2,14 +2,23 @@ import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 import { SteppedDiamond, Pip } from "@/components/Motifs";
 
-/* Zameni pravim podacima. */
-const EMAIL = "zdravo@marija.rs";
+const EMAIL = "mqrijqio@gmail.com";
 
-const MREZE = [
-  { label: "Instagram", href: "https://instagram.com/", handle: "@marija" },
-  { label: "Behance", href: "https://behance.net/", handle: "/marija" },
-  { label: "LinkedIn", href: "https://linkedin.com/", handle: "/in/marija" },
-  { label: "GitHub", href: "https://github.com/mqrijqm", handle: "@mqrijqm" },
+/** LinkedIn i telefon — ostale mreže ne postoje. Vanjski linkovi se otvaraju
+ *  u novom tabu, `tel:` nikad. */
+const STAVKE = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/marija-malešević",
+    handle: "/in/marija-malešević",
+    spolja: true,
+  },
+  {
+    label: "Telefon",
+    href: "tel:+38766304294",
+    handle: "+387 66 304 294",
+    spolja: false,
+  },
 ];
 
 const RAZLOZI = [
@@ -54,12 +63,12 @@ export default function Kontakt() {
 
             <Reveal delay={0.16}>
               <ul className="mt-12 border-t border-forest/15">
-                {MREZE.map((m) => (
+                {STAVKE.map((m) => (
                   <li key={m.label}>
                     <a
                       href={m.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      target={m.spolja ? "_blank" : undefined}
+                      rel={m.spolja ? "noopener noreferrer" : undefined}
                       className="group flex items-baseline justify-between gap-6 border-b border-forest/15 py-4 transition-colors hover:text-clay"
                     >
                       <span className="text-lg font-light">{m.label}</span>

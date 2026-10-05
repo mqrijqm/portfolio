@@ -1,7 +1,5 @@
-import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import Nav from "@/components/Nav";
-import { SteppedDiamond } from "@/components/Motifs";
 import SapoljaLockup from "@/components/sapolja-brend/SapoljaLockup";
 import SapoljaLogotip from "@/components/sapolja-brend/SapoljaLogotip";
 import SapoljaLogotipSlogan from "@/components/sapolja-brend/SapoljaLogotipSlogan";
@@ -11,18 +9,6 @@ import PaletaKolona from "@/components/sapolja-brend/PaletaKolona";
 import LogoProcess from "@/components/sapolja-brend/LogoProcess";
 import LetakScena from "@/components/sapolja-brend/LetakScena";
 import { A, BOJE, uCmyk, uRgb } from "@/lib/sapoljaBrend";
-
-export const metadata: Metadata = {
-  title: "SaPolja — brend identitet | Marija",
-  description:
-    "Brend identitet za SaPolja: znak, tipografija, paleta i primjene. Banja Luka, 2026.",
-  openGraph: {
-    title: "SaPolja — brend identitet",
-    description: "Znak, tipografija, paleta i primjene. Banja Luka, 2026.",
-    locale: "sr_RS",
-    type: "article",
-  },
-};
 
 /** Brend boje ulaze kao promjenljive — svaka zelena na stranici ide kroz var(--green). */
 const tema = {
@@ -85,84 +71,19 @@ export default function SapoljaBrendPage() {
         style={tema}
         className="flex flex-col font-[family-name:var(--font-inter)] text-[color:var(--green)]"
       >
-        {/* ==================== 1 · HERO (ULAZ) ==================== */}
-        {/* Prvi ekran je prazan prostor namjerno — ulaz u sajt, bez sadržaja
-            koji bi odvukao pažnju od identiteta koji slijedi. */}
+        {/* ============================ 1 · HERO ============================ */}
         <section
-          id="hero"
-          className="order-1 flex min-h-[100svh] flex-col justify-between bg-linen px-6 pb-[7vh] pt-[19vh] text-forest sm:px-10 md:px-[8vw]"
+          id="sapolja-uvod"
+          className={`order-1 relative flex flex-col items-center justify-center bg-[color:var(--cream)] px-6 py-16 ${EKRAN}`}
         >
-          <div className="flex items-baseline justify-between gap-6">
-            <p className="font-sans text-[12px] font-medium uppercase tracking-[0.08em] text-forest-soft">
-              PORTFOLIO · 2026
-            </p>
-            <p className="text-right font-sans text-[12px] font-medium uppercase tracking-[0.08em] text-forest-soft/70">
-              BANJA LUKA
-            </p>
-          </div>
-
-          <div className="mt-[14vh]">
-            <h1 className="font-[family-name:var(--font-gazpacho)] text-[clamp(64px,13vw,190px)] font-light leading-[0.9] tracking-[-0.02em]">
-              Marija
-            </h1>
-            <p className="mt-8 max-w-[34ch] font-sans text-[clamp(15px,1.35vw,19px)] leading-[1.75] text-forest-soft">
-              Grafički i web dizajn. Identiteti, editorijali i sajtovi koji
-              imaju šta da kažu.
-            </p>
-          </div>
-
-          <div className="mt-[12vh] flex items-center justify-between gap-6 border-t border-forest/20 pt-4">
-            <span className="font-sans text-[12px] font-medium uppercase tracking-[0.08em] text-forest-soft">
-              SCROLL
-            </span>
-            <SteppedDiamond className="h-3.5 w-3.5 text-clay" />
-          </div>
-        </section>
-
-        {/* ================== 2 · E-COM PLATFORME ================== */}
-        {/* Druga sekcija drži isti ritam praznog prostora — prostor za sadržaj
-            koji tek dolazi, da bi skrol do Brendinga imao šta da pređe. */}
-        <section
-          id="e-com"
-          className="order-2 flex min-h-[100svh] flex-col bg-linen-light px-6 pb-[7vh] pt-[19vh] text-forest sm:px-10 md:px-[8vw]"
-        >
-          <div className="flex items-baseline justify-between gap-6">
-            <p className="font-sans text-[12px] font-medium uppercase tracking-[0.08em]">
-              E-COM PLATFORME
-            </p>
-            <p className="text-right font-sans text-[12px] font-medium uppercase tracking-[0.08em] text-forest-soft/70">
-              U PRIPREMI
-            </p>
-          </div>
-
-          <div className="mt-auto max-w-[18ch]">
-            <h2 className="font-[family-name:var(--font-gazpacho)] text-[clamp(40px,7vw,96px)] font-light italic leading-[1.02] tracking-[-0.02em]">
-              Prodavnice koje rade same od sebe
-            </h2>
-          </div>
-
-          <div className="mt-[10vh] border-t border-forest/20 pt-4">
-            <span className="font-sans text-[12px] font-medium uppercase tracking-[0.08em] text-forest-soft">
-              DALJE — BRENDING
-            </span>
-          </div>
-        </section>
-
-        {/* ============== 3 · BRENDING (postojeci sadržaj) ============== */}
-        {/* Sve ispod je dosadašnji sadržaj stranice, samo sabran pod jednim
-            sidrom — navbar na BRENDING skroluje upravo ovdje. Sekcije zadržavaju
-            svoje order-klase, pa je raspored unutra identičan kao prije. */}
-        <div id="brending" className="order-3 flex flex-col">
-          {/* ============================ 1 · HERO ============================ */}
-          <section
-            id="sapolja-uvod"
-            className={`order-1 relative flex flex-col items-center justify-center bg-[color:var(--cream)] px-6 py-16 ${EKRAN}`}
-          >
-        <p
-          className={`absolute left-6 top-16 text-[color:var(--green)] sm:top-20 ${NADNASLOV}`}
-        >
-          SAPOLJA — BREND IDENTITET · BANJA LUKA · 2026
-        </p>
+        <div className="absolute inset-x-6 top-16 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 sm:top-20">
+          <p className={`text-[color:var(--green)] ${NADNASLOV}`}>
+            SAPOLJA — BREND IDENTITET · BANJA LUKA · 2026
+          </p>
+          <p className={`text-[color:var(--green)] ${NADNASLOV}`}>
+            PLATFORMA U RAZVOJU
+          </p>
+        </div>
 
         {/* Lockup već nosi slogan u krivama — zaseban tekst ispod bi ga ponovio. */}
         <SapoljaLockup
@@ -375,7 +296,7 @@ export default function SapoljaBrendPage() {
         className="order-6 overflow-hidden bg-[color:var(--cream)] py-16"
       >
         <div className="flex items-baseline justify-between gap-6 px-6 text-[color:var(--green)]">
-          <p className={NADNASLOV}>ILUSTRACIJE PROIZVODA</p>
+          <p className={NADNASLOV}>ILUSTRACIJE PROIZVODA (ADOBE 2024)</p>
           <p className={`${NADNASLOV} text-right opacity-75`}>
             GRAVIRANI CRTEŽI
           </p>
@@ -404,65 +325,7 @@ export default function SapoljaBrendPage() {
           />
         </div>
       </section>
-      </div>
-
-      {/* ========================== 4 · KONTAKT ========================== */}
-      {/* Vraća se u njen lični jezik — linen i gazpacho, ne SaPolja paleta:
-          ovo je potpis na kraju case studyja, ne dio brenda. */}
-      <section
-        id="kontakt"
-        className="order-4 flex min-h-[100svh] flex-col justify-between bg-linen px-6 pb-[7vh] pt-[19vh] text-forest sm:px-10 md:px-[8vw]"
-      >
-        <div className="flex items-baseline justify-between gap-6">
-          <p className="font-sans text-[12px] font-medium uppercase tracking-[0.08em]">
-            KONTAKT
-          </p>
-          <p className="text-right font-sans text-[12px] font-medium uppercase tracking-[0.08em] text-forest-soft/70">
-            SLOBODNO PIŠI
-          </p>
-        </div>
-
-        <div className="mt-[12vh]">
-          <p className="max-w-[20ch] font-[family-name:var(--font-gazpacho)] text-[clamp(38px,6.5vw,92px)] font-light italic leading-[1.04] tracking-[-0.02em]">
-            Ima nešto što treba da izgleda kao nešto?
-          </p>
-
-          <a
-            href="mailto:zdravo@marija.rs"
-            className="group mt-10 inline-flex flex-wrap items-baseline gap-3 border-b border-clay pb-2 text-[clamp(20px,3vw,40px)] font-light leading-none transition-colors hover:text-clay"
-          >
-            zdravo@marija.rs
-          </a>
-
-          <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 font-sans text-[13px] uppercase tracking-[0.18em] text-forest-soft">
-            {[
-              { ime: "Instagram", href: "https://instagram.com/" },
-              { ime: "Behance", href: "https://behance.net/" },
-              { ime: "LinkedIn", href: "https://linkedin.com/" },
-              { ime: "GitHub", href: "https://github.com/mqrijqm" },
-            ].map((m) => (
-              <li key={m.ime}>
-                <a
-                  href={m.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-clay"
-                >
-                  {m.ime}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-[10vh] flex items-center justify-between gap-6 border-t border-forest/20 pt-4">
-          <span className="font-sans text-[12px] font-medium uppercase tracking-[0.08em] text-forest-soft">
-            MARIJA · BANJA LUKA
-          </span>
-          <SteppedDiamond className="h-3.5 w-3.5 text-clay" />
-        </div>
-      </section>
-    </main>
+      </main>
     </>
   );
 }
