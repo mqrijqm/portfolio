@@ -12,6 +12,13 @@ const LetakTri = dynamic(() => import("./LetakTri"), { ssr: false });
 export default function LetakScena() {
   const okvir = useRef<HTMLDivElement>(null);
   const [blizu, setBlizu] = useState(false);
+  /**
+   * Kreće od true: scena se mount-uje tek kad se sekcija približi, pa je u
+   * tom trenutku ionako na ekranu. Ovako Canvas nikad ne startuje ugašen —
+   * frameloop="never" na prvi frame znači prazno platno, a model od 1,5 MB
+   * se učitava posle mount-a. Posle ga IO gasi van ekrana.
+   */
+  const [aktivna, setAktivna] = useState(true);
 
   /**
    * Koliko je sekcija proskrolovana: 0 kad se pinovana scena tek zalijepi,
@@ -26,15 +33,17 @@ export default function LetakScena() {
 
     // Bez IntersectionObservera (stariji preglednici) samo učitaj odmah.
     if (typeof IntersectionObserver === "undefined") {
-      setBlizu(true);
-      return;
+      const odloži = window.setTimeout(() => {
+        setBlizu(true);
+        setAktivna(true);
+      }, 0);
+      return () => window.clearTimeout(odloži);
     }
 
     const posmatrač = new IntersectionObserver(
       ([ulaz]) => {
-        if (!ulaz.isIntersecting) return;
-        setBlizu(true);
-        posmatrač.disconnect();
+        setAktivna(ulaz.isIntersecting);
+        if (ulaz.isIntersecting) setBlizu(true);
       },
       { rootMargin: "600px 0px" },
     );
@@ -48,10 +57,10 @@ export default function LetakScena() {
     const sekcija = okvir.current?.closest("section");
     if (!sekcija) return;
 
-    let zakazano = false;
+    let zakazano: number | null = null;
 
     const izmjeri = () => {
-      zakazano = false;
+      zakazano = null;
       const r = sekcija.getBoundingClientRect();
       const hod = r.height - window.innerHeight;
       if (hod <= 0) return;
@@ -60,15 +69,15 @@ export default function LetakScena() {
     };
 
     const naSkrol = () => {
-      if (zakazano) return;
-      zakazano = true;
-      requestAnimationFrame(izmjeri);
+      if (zakazano !== null) return;
+      zakazano = requestAnimationFrame(izmjeri);
     };
 
     izmjeri();
     window.addEventListener("scroll", naSkrol, { passive: true });
     window.addEventListener("resize", naSkrol);
     return () => {
+      if (zakazano !== null) cancelAnimationFrame(zakazano);
       window.removeEventListener("scroll", naSkrol);
       window.removeEventListener("resize", naSkrol);
     };
@@ -76,7 +85,7 @@ export default function LetakScena() {
 
   return (
     <div ref={okvir} className="absolute inset-0">
-      {blizu ? <LetakTri napredak={napredak} /> : null}
+      {blizu ? <LetakTri napredak={napredak} aktivna={aktivna} /> : null}
     </div>
   );
 }

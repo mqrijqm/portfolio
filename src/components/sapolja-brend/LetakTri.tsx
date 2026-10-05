@@ -5,7 +5,6 @@ import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
-  AdaptiveDpr,
   ContactShadows,
   Environment,
   Lightformer,
@@ -23,6 +22,9 @@ const SJENKA = 0.42;
 
 /** Početni ugao kamere u horizontali. Kad je rotacija letka jednaka njemu, letak gleda pravo u nas. */
 const AZIMUT = Math.atan2(1.9, 3.1);
+
+/** Boxshot izvozi lice prema -Z, zato početni kadar traži još pola kruga. */
+const POCETNI_OKRET = AZIMUT + Math.PI;
 
 /** Smootherstep: sporo na krajevima, brzo u sredini. */
 const meko = (x: number) => x * x * x * (x * (x * 6 - 15) + 10);
@@ -73,9 +75,14 @@ function Letak({
   mirno: boolean;
 }) {
   const { scene } = useGLTF(MODEL);
+  const maksimalnaAnizotropija = useThree((s) =>
+    s.gl.capabilities.getMaxAnisotropy(),
+  );
   const nosač = useRef<THREE.Group>(null);
   /** Ublažena kopija skrola — sirova vrijednost skače, ova je stiže sa zaostatkom. */
-  const glatko = useRef(0);
+  const glatko = useRef(napredak.current);
+  /** Vrijeme lebdenja staje zajedno sa scenom kad je ona van ekrana. */
+  const vrijeme = useRef(0);
   const sjenka = useRef<THREE.Group>(null);
   /** Radni vektor — pravimo ga jednom, ne svaki frame. */
   const pomak = useMemo(() => new THREE.Vector3(), []);
@@ -112,6 +119,12 @@ function Letak({
         if (!std?.map) return m;
         const kopija = std.clone();
         kopija.color.setScalar(1);
+        // Tekst na papiru ostaje miran i čitak i pod oštrim uglom.
+        const mapa = kopija.map;
+        if (mapa) {
+          mapa.anisotropy = Math.min(8, maksimalnaAnizotropija);
+          mapa.needsUpdate = true;
+        }
         return kopija;
       }) as THREE.Material[];
       if (!Array.isArray(mat)) mesh.material = (mesh.material as THREE.Material[])[0];
@@ -131,9 +144,9 @@ function Letak({
     nosač.add(root);
     nosač.scale.setScalar(VISINA / veličina.y);
     return nosač;
-  }, [scene]);
+  }, [maksimalnaAnizotropija, scene]);
 
-  useFrame(({ clock }, dt) => {
+  useFrame((_, dt) => {
     const g = nosač.current;
     if (!g) return;
 
@@ -143,7 +156,7 @@ function Letak({
     const materijalSjenke = ploča?.material as THREE.Material | undefined;
 
     if (mirno) {
-      g.rotation.set(0, 0, 0);
+      g.rotation.set(0, POCETNI_OKRET, 0);
       g.position.set(0, 0, 0);
       g.scale.setScalar(1);
       if (materijalSjenke) materijalSjenke.opacity = SJENKA;
@@ -151,9 +164,16 @@ function Letak({
     }
 
     // damp = eksponencijalno stizanje ka cilju, neovisno o broju frameova
-    glatko.current = THREE.MathUtils.damp(glatko.current, napredak.current, 5, dt);
+    const korak = Math.min(dt, 0.1);
+    glatko.current = THREE.MathUtils.damp(
+      glatko.current,
+      napredak.current,
+      5,
+      korak,
+    );
+    vrijeme.current += korak;
     const p = glatko.current;
-    const t = clock.elapsedTime;
+    const t = vrijeme.current;
 
     // Tri nezavisne trake: koliko smo blizu logu, koliko okrenuti, koliko
     // blizu ilustracijama. Prva ide 0→1→0 jer se logu priđe pa se odmakne.
@@ -175,7 +195,10 @@ function Letak({
     const prelet = Math.sin(Math.PI * okret);
 
     g.scale.setScalar(zum);
-    g.rotation.y = AZIMUT + Math.PI * okret + Math.sin(t * 0.35) * 0.06 * smiraj;
+    g.rotation.y =
+      POCETNI_OKRET +
+      Math.PI * okret +
+      Math.sin(t * 0.35) * 0.06 * smiraj;
     g.rotation.x =
       (0.5 - p) * 0.1 * smiraj + Math.sin(t * 0.5) * 0.05 * smiraj + prelet * 0.16;
     g.rotation.z = Math.sin(t * 0.43) * 0.05 * smiraj + prelet * 0.3;
@@ -206,7 +229,8 @@ function Letak({
         opacity={SJENKA}
         blur={2.8}
         far={3}
-        resolution={512}
+        resolution={256}
+        smooth={false}
         color="#04150f"
       />
     </>
@@ -233,11 +257,8 @@ function Ključ() {
   return (
     <directionalLight
       ref={svjetlo}
-      castShadow
       color="#fff4e2"
       intensity={1.7}
-      shadow-mapSize={[1024, 1024]}
-      shadow-bias={-0.0005}
     />
   );
 }
@@ -319,7 +340,13 @@ function Kadar() {
   return null;
 }
 
-export default function LetakTri({ napredak }: { napredak: RefObject<number> }) {
+export default function LetakTri({
+  napredak,
+  aktivna,
+}: {
+  napredak: RefObject<number>;
+  aktivna: boolean;
+}) {
   const [mirno, setMirno] = useState(false);
 
   useEffect(() => {
@@ -330,10 +357,15 @@ export default function LetakTri({ napredak }: { napredak: RefObject<number> }) 
     return () => upit.removeEventListener("change", primijeni);
   }, []);
 
+  /**
+   * "never" bi značilo mrtvo platno: R3F ne crta ni jedan frame, pa se vidi
+   * samo zelena pozadina sekcije. "demand" crta po pozivu — model ostaje
+   * vidljiv i van ekrana, a bez skrola trošak je gotovo nula.
+   */
   return (
     <Canvas
-      shadows="percentage"
-      dpr={[1, 1.75]}
+      frameloop={aktivna ? "always" : "demand"}
+      dpr={[1, 1.5]}
       gl={{ antialias: true, powerPreference: "high-performance" }}
       camera={{ position: [1.9, 0.9, 3.1], fov: 32 }}
       style={{ touchAction: "pan-y" }}
@@ -347,6 +379,7 @@ export default function LetakTri({ napredak }: { napredak: RefObject<number> }) 
 
       <OrbitControls
         makeDefault
+        enabled={aktivna && !mirno}
         enablePan={false}
         // Zum je isključen namjerno: kotačić nad modelom mora i dalje da
         // skroluje stranicu, inače korisnik zapne u sekciji.
@@ -358,7 +391,6 @@ export default function LetakTri({ napredak }: { napredak: RefObject<number> }) 
         maxPolarAngle={2.2}
       />
 
-      <AdaptiveDpr pixelated />
     </Canvas>
   );
 }
